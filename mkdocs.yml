@@ -4,7 +4,7 @@ repo_url: "https://github.com/dynatrace-perfclinics/obslab-log-problem-detection
 nav:
   - '1. About': index.md
   - '2. Getting Started': getting-started.md
-  - '3. Install Components': install-opentelemetry-components.md
+  - '3. Installation Explained': installation-explained.md
   - '4. Access User Interface': access-ui.md
   - ''
   - '5. Create Entity Type': create-entity-type.md
@@ -38,12 +38,19 @@ theme:
       icon: material/brightness-4
       name: Switch to system preference
 markdown_extensions:
-  - attr_list 
+  - attr_list
   - toc:
       permalink: '#'
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
 plugins:
     - search
-    - markdownextradata
+    - markdownextradata  
 extra:
   dt:
     rumagent:
