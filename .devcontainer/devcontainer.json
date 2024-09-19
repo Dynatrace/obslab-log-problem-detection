@@ -38,8 +38,16 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": ".devcontainer/post-create.sh"
+	"postCreateCommand": ".devcontainer/post-create.sh",
 
-  // TODO: Secrets
+	// Add recommended secrets
+	"secrets": {
+		"DT_URL_OBSLAB_LOG_PROBLEM_DETECTION": {
+			 "description": "eg. https://abc12345.live.dynatrace.com"
+	 },
+	   "DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION": {
+			 "description": "Dynatrace API token with these permissions: `logs.ingest`, `events.ingest`, `settings.read`, `settings.write`"
+	 }
+ 	}
 
 }
