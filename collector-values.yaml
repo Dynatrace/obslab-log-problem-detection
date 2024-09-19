@@ -1,0 +1,47 @@
+mode: deployment
+image:
+  repository: ghcr.io/dynatrace/dynatrace-otel-collector/dynatrace-otel-collector
+  tag: latest
+command:
+  name: dynatrace-otel-collector
+extraEnvs:
+- name: DT_API_TOKEN
+  valueFrom:
+    secretKeyRef:
+      name: dynatrace-otelcol-dt-api-credentials
+      key: DT_API_TOKEN
+- name: DT_ENDPOINT
+  valueFrom:
+    secretKeyRef:
+      name: dynatrace-otelcol-dt-api-credentials
+      key: DT_ENDPOINT
+resources:
+  limits:
+    memory: 512Mi
+config:
+  receivers:
+    jaeger: null
+    prometheus: null
+    zipkin: null
+    otlp:
+      protocols:
+        grpc:
+          endpoint: ${env:MY_POD_IP}:4317
+        http:
+          endpoint: ${env:MY_POD_IP}:4318
+    filelog: null
+  exporters:
+    debug:
+      verbosity: detailed
+    otlphttp:
+      endpoint: "${env:DT_ENDPOINT}"
+      headers:
+        Authorization: "Api-Token ${env:DT_API_TOKEN}"
+  service:
+    pipelines:
+      metrics: null
+      traces: null
+      logs:
+        receivers: [otlp]
+        processors: []
+        exporters: [debug, otlphttp]
