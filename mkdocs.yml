@@ -1,0 +1,52 @@
+site_name: "Dynatrace Observability Lab: Problem Detection with Logs"
+repo_name: "View Code on GitHub"
+repo_url: "https://github.com/dynatrace-perfclinics/obslab-log-problem-detection"
+nav:
+  - '1. About': index.md
+  - '2. Getting Started': getting-started.md
+  - '3. Install Components': install-opentelemetry-components.md
+  - '4. Access User Interface': access-ui.md
+  - ''
+  - '5. Create Entity Type': create-entity-type.md
+  - '6. Create OpenPipeline': create-openpipeline.md
+  - '6. Cleanup': cleanup.md
+  - '7. Release New Feature': release-new-feature.md
+  - '8. Check Dynatrace Problems': check-problems.md
+  - '11. Resources': resources.md
+  - "12. What's Next?": whats-next.md
+theme:
+  name: material
+  custom_dir: custom_theme
+  palette:
+
+  # Palette toggle for automatic mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+
+  # Palette toggle for light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default 
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+  # Palette toggle for dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference
+markdown_extensions:
+  - attr_list 
+  - toc:
+      permalink: '#'
+plugins:
+    - search
+    - markdownextradata
+extra:
+  dt:
+    rumagent:
+      snippet: <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/1b109d4de75a8985_complete.js" crossorigin="anonymous"></script>
+  obslab: obslab-log-problem-detection
