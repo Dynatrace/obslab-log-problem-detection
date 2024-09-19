@@ -19,9 +19,8 @@ RUN apt-get update && \
     apt-get clean -y
 
 # 1. Install Python, gh CLI and test harness dependencies
-apt install -y python3
-apt install -y python3-pip
-pip install --break-system-packages -r requirements.txt
+RUN apt install python3 python3-pip -y
+RUN pip install --break-system-packages -r requirements.txt
 
 # Install yq
 sudo wget https://github.com/mikefarah/yq/releases/download/$YQ_VERSION/$YQ_BINARY -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
