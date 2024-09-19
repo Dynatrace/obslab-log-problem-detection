@@ -17,9 +17,9 @@ RUN apt-get update && \
     apt-get clean -y
 
 # 1. Install Python, gh CLI and test harness dependencies
-# apt install -y python3
-# apt install -y python3-pip
-# pip install --break-system-packages -r requirements.txt
+apt install -y python3
+apt install -y python3-pip
+pip install --break-system-packages -r requirements.txt
 
 # Install kubectl
 RUN curl -sSL -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
