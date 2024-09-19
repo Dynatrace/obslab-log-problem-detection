@@ -23,7 +23,7 @@ RUN apt install python3 python3-pip -y
 RUN pip install --break-system-packages -r requirements.txt
 
 # Install yq
-sudo wget https://github.com/mikefarah/yq/releases/download/$YQ_VERSION/$YQ_BINARY -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
+RUN wget https://github.com/mikefarah/yq/releases/download/$YQ_VERSION/$YQ_BINARY -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
 # Install kubectl
 RUN curl -sSL -o /usr/local/bin/kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl \
