@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# Install
+# install pip packages
+pip install --break-system-packages -r requirements.txt
+
+# Install cluster
 kind create cluster --config .devcontainer/kind-cluster.yml --wait 300s
 
 # Add Helm chart(s)
