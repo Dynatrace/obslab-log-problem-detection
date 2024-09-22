@@ -14,7 +14,7 @@ curl -X POST "$DT_URL_OBSLAB_LOG_PROBLEM_DETECTION/api/v2/events/ingest" \
     \"title\": \"feature flag changed\",
     \"timeout\": 30,
     \"entitySelector\": \"type(entity:service),entityName.equals($1)\",
-    \"eventType\": \"CUSTOM_CONFIGURATION\",
+    \"eventType\": \"DEPLOYMENT_CHANGED_CHANGE\",
     \"properties\": {
       \"dt.event.is_rootcause_relevant\": true,
       \"action\": \"changed\",
