@@ -18,6 +18,8 @@ In Dynatrace:
 * Press `ctrl + k`. Search for `access tokens`.
 * Create a new access token with the following permissions:
     * `logs.ingest`
+    * `metrics.ingest`
+    * `openTelemetryTrace.ingest`
     * `events.ingest`
     * `settings.read`
     * `settings.write`

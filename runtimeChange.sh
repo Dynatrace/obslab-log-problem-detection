@@ -12,36 +12,15 @@ curl -X POST "$DT_URL_OBSLAB_LOG_PROBLEM_DETECTION/api/v2/events/ingest" \
   -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token $DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION" -H "Content-Type: application/json; charset=utf-8" \
   -d "{
     \"title\": \"feature flag changed\",
-    \"entitySelector\": \"type(entity:service),entityName.equals($1)\",
+    \"entitySelector\": \"type(SERVICE),entityName.equals($1)\",
     \"eventType\": \"CUSTOM_CONFIGURATION\",
     \"properties\": {
       \"dt.event.is_rootcause_relevant\": true,
       \"action\": \"changed\",
-      \"service\": \"$1\",
       \"feature_flag.key\": \"$2\",
       \"defaultValue\": \"$3\"
     }
   }"
-
-# TODO
-#{
-#  "eventType": "CUSTOM_DEPLOYMENT",
-#  "title": "Easytravel 1.1",
-#  "entitySelector": "type(PROCESS_GROUP_INSTANCE),tag(easytravel)",
-#  "properties": {
-#    "dt.event.deployment.name":"Easytravel 1.1",
-#    "dt.event.deployment.version": "1.1",                  <-- Mandatory
-#    "dt.event.deployment.release_stage": "production" ,
-#    "dt.event.deployment.release_product": "frontend",
-#    "dt.event.deployment.release_build_version": "123",
-#    "approver": "Jason Miller",
-#    "dt.event.deployment.ci_back_link": "https://pipelines/easytravel/123",
-#    "gitcommit": "e5a6baac7eb",
-#    "change-request": "CR-42",
-#    "dt.event.deployment.remediation_action_link": "https://url.com",
-#    "dt.event.is_rootcause_relevant": true
-#  }
-#}
 
 ##############
 # Step 2
