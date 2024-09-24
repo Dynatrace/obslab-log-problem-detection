@@ -22,11 +22,10 @@ helm upgrade -i dynatrace-collector open-telemetry/opentelemetry-collector -f co
 helm upgrade -i my-otel-demo open-telemetry/opentelemetry-demo -f otel-demo-values.yaml
 
 # Creation Ping
-# TODO: Enable
-# curl -X POST https://grzxx1q7wd.execute-api.us-east-1.amazonaws.com/default/codespace-tracker \
-#   -H "Content-Type: application/json" \
-#   -d "{
-#     \"repo\": \"$GITHUB_REPOSITORY\",
-#     \"demo\": \"obslab-log-problem-detection\",
-#     \"codespace.name\": \"$CODESPACE_NAME\"
-#   }"
+curl -X POST https://grzxx1q7wd.execute-api.us-east-1.amazonaws.com/default/codespace-tracker \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"repo\": \"$GITHUB_REPOSITORY\",
+    \"demo\": \"obslab-log-problem-detection\",
+    \"codespace.name\": \"$CODESPACE_NAME\"
+  }"
