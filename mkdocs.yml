@@ -6,14 +6,12 @@ nav:
   - '2. Getting Started': getting-started.md
   - '3. Installation Explained': installation-explained.md
   - '4. Access User Interface': access-ui.md
-  - '5. Validate Observability Data': validate-observability-data.md
-  - '6. Create Entity Type': create-entity-type.md
-  - '7. Create OpenPipeline': create-openpipeline.md
+  - '5. Validate Observability Data': view-observability-data.md
+  - '6. Introduce System Change': introduce-change.md
+  - '7. Review Problem': review-problem.md
   - '8. Cleanup': cleanup.md
-  - '9. Release New Feature': release-new-feature.md
-  - '0. Check Dynatrace Problems': check-problems.md
-  - '10. Resources': resources.md
-  - "11. What's Next?": whats-next.md
+  - '9. Resources': resources.md
+  - "10. What's Next?": whats-next.md
 theme:
   name: material
   palette:
