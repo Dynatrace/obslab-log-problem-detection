@@ -16,3 +16,10 @@ default:
           fieldPath: "metadata.labels['app.kubernetes.io/component']"
     - name: OTEL_COLLECTOR_NAME
       value: 'dynatrace-collector-opentelemetry-collector'
+
+components:
+  cartService:
+    podAnnotations:
+      ownedBy: adam
+      product: otel-demo-app
+      costCentre: centre1
