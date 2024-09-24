@@ -21,13 +21,10 @@ In Dynatrace:
     * `metrics.ingest`
     * `openTelemetryTrace.ingest`
     * `events.ingest`
-    * `settings.read`
-    * `settings.write`
 
 #### API Token Permissions Explained
 * `logs.ingest` is required to send log entries into Dynatrace
 * `events.ingest` is required to send the `CUSTOM_CONFIGURATION` event into Dynatrace
-* `settings.read` and `settings.write` are required to create the custom `service` entity type
 
 ## Start Demo
 

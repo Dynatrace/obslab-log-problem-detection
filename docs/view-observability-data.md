@@ -1,0 +1,3 @@
+In Dynatrace, press `ctrl + k` and search for `Services`. Dynatrace creates service entities based on the incoming span data.
+
+You can also query data via [notebooks](https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-notebooks/notebooks){target=_blank} and [dashboards](https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-notebooks/dashboards-new){target=_blank} (`ctrl + k` and search for `notebooks` or `dashboards`)

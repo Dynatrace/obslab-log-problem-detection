@@ -8,11 +8,6 @@ They will also be stored in a Kubernetes secret:
 kubectl get secret/dynatrace-otelcol-dt-api-credentials -o yaml
 ```
 
-## Log Data Only
-
-Although the OpenTelemetry demo application emits metrics, logs and traces,
-the Dynatrace OpenTelemetry collector is configured to send **only log data** to Dynatrace.
-
 ## Wait for System
 
 Wait for all pods to be Ready (can take up to 10mins)
