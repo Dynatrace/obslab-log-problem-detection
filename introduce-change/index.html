@@ -589,6 +589,9 @@ by changing the <code>cartServiceFailure</code> feature flag from <code>off</cod
 <p>Now apply the change by running this command:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 </code></pre></div>
+<p>You should see:</p>
+<div class="highlight"><pre><span></span><code>configmap/my-otel-demo-flagd-config configured
+</code></pre></div>
 <p>The application will now generate errors when emptying the users cart.
 It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.</p>
 <div class="grid cards">
