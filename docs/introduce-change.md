@@ -5,19 +5,18 @@ This simulates releasing new functionality to your users in production.
 ## Inform Dynatrace
 
 First, inform Dynatrace that a change is about to occur.
-Namely, you are going to change the `cartServiceFailure` feature flag from `off` to `on`.
+Namely, you are going to make a change to the `my-otel-demo-cartservice` service 
+by changing the `cartServiceFailure` feature flag from `off` to `on`.
 
 Tell Dynatrace about the upcoming change by sending an event (note: This event does **not** actually make the change; you need to do this).
-
-A wrapper script to help you with this.
 
 Run the following:
 
 ```
-./runtimeChange.sh cartservice cartServiceFailure on
+./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
 ```
 
-Refresh the `cartservice` page and near the bottom you should see the configuration change event.
+Refresh the `my-otel-demo-cartservice` page and near the bottom you should see the configuration change event.
 
 ![configuration changed event](images/configuration-change-event.png)
 
@@ -34,6 +33,9 @@ Now apply the change by running this command:
 ```
 kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 ```
+
+The application will now generate errors when emptying the users cart.
+It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.
 
 <div class="grid cards" markdown>
 - [Click Here to Continue :octicons-arrow-right-24:](review-problem.md)

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Usage: ./runtimeChange.sh serviceName flagKey newFlagValue
-# eg. ./runtimeChange.sh cartservice cartServiceFailure on
+# eg. ./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
 
 echo "Changing feature flag key: $2 to $3 for service: $1"
 
