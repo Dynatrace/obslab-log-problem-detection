@@ -49,6 +49,8 @@ There is a load generator running, but you can generate traffic by accessing the
 
 See [access user interface](access-ui.md){target=_blank}
 
+Repeatedly add an item to your cart, go to the cart and empty it. Hope you're "lucky" that you generate a backend failure.
+
 <div class="grid cards" markdown>
 - [Click Here to Continue :octicons-arrow-right-24:](review-problem.md)
 </div>

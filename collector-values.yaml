@@ -109,10 +109,10 @@ config:
           #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cartservice"
           statements:
             # Case insensitive match
-            # - set(attributes["alertme"], true)
+            # - set(attributes["alertme"], "true")
             #   where resource.attributes["service.name"] == "cartservice"
             #   and IsMatch(body, "(?i)getcartasync.*")
-            - set(attributes["alertme"], true)
+            - set(attributes["alertme"], "true")
               where resource.attributes["service.name"] == "cartservice"
               and IsMatch(body, "GetCartAsync.*")
   exporters:
