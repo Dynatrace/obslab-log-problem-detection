@@ -46,6 +46,24 @@ config:
           - k8s.namespace.name
           - k8s.node.name
           - k8s.cluster.uid
+        annotations:
+          # Extracts the value of a pod annotation with key `ownedBy` and inserts it as a resource attribute with key `dt.owner`
+          # see otel-demo-values.yaml for where `ownedBy` is set as a custom annotation only on the `cartservice` pods
+          - tag_name: dt.owner
+            key: ownedBy
+            from: pod
+          # Extracts the value of a pod annotation with key `product` and inserts it as a resource attribute with key `dt.cost.product`
+          # see otel-demo-values.yaml for where `product` is set as a custom annotation only on the `cartservice` pods
+          - tag_name: dt.cost.product
+            key: product
+            from: pod
+          # Extracts the value of a pod annotation with key `costCentre` and inserts it as a resource attribute with key `dt.cost.costcenter`
+          # Notice the deliberate English / US spelling differences to emphasis that `costCentre` is a custom annotation
+          # set in otel-demo-values.yaml
+          - tag_name: dt.cost.costcenter
+            key: costCentre
+            from: pod
+      # How to associate the data to a pod (order matters)
       pod_association:
         - sources:
           - from: resource_attribute
@@ -60,6 +78,7 @@ config:
             name: k8s.pod.uid
         - sources:
           - from: connection
+
     transform:
       error_mode: ignore
       trace_statements:
@@ -98,9 +117,9 @@ config:
         exporters: [otlphttp]
       traces:
         receivers: [otlp]
-        processors: []
+        processors: [k8sattributes, transform]
         exporters: [otlphttp]
       logs:
         receivers: [otlp]
-        processors: []
+        processors: [k8sattributes, transform]
         exporters: [debug, otlphttp]
