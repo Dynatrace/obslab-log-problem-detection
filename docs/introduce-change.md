@@ -43,6 +43,12 @@ configmap/my-otel-demo-flagd-config configured
 The application will now generate errors when emptying the users cart.
 It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.
 
+## Generate Your Own Traffic
+
+There is a load generator running, but you can generate traffic by accessing the site.
+
+See [access user interface](access-ui.md){target=_blank}
+
 <div class="grid cards" markdown>
 - [Click Here to Continue :octicons-arrow-right-24:](review-problem.md)
 </div>
