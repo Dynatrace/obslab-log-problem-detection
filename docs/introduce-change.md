@@ -36,5 +36,5 @@ kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 ```
 
 <div class="grid cards" markdown>
-- [Click Here to Begin :octicons-arrow-right-24:](review-problem.md)
+- [Click Here to Continue :octicons-arrow-right-24:](review-problem.md)
 </div>
