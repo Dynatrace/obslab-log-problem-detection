@@ -15,5 +15,6 @@ You should see the OpenTelemetry demo application.
 
 ![opentelemetry demo application](images/otel-demo-app.png)
 
-
-## [Click Here to Continue...](view-observability-data.md)
+<div class="grid cards" markdown>
+- [Click Here to Continue :octicons-arrow-right-24:](view-observability-data.md)
+</div>
