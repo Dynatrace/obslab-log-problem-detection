@@ -116,7 +116,7 @@ config:
             #   and IsMatch(body, "(?i)getcartasync.*")
             - set(attributes["alertme"], "true")
               where resource.attributes["service.name"] == "cartservice"
-              and IsMatch(body, "(?)wasn't able to connect to redis.*")
+              and IsMatch(body, "(?i)wasn't able to connect to redis.*")
   exporters:
     debug:
       verbosity: detailed
