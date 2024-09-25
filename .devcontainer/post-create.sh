@@ -15,6 +15,10 @@ kubectl create secret generic dynatrace-otelcol-dt-api-credentials \
   --from-literal=DT_ENDPOINT=$DT_URL_OBSLAB_LOG_PROBLEM_DETECTION/api/v2/otlp \
   --from-literal=DT_API_TOKEN=$DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION
 
+# Install RBAC items so collector can talk to k8s API
+# to retrieve topology info / pod metadata
+kubectl apply -f collector-rbac.yaml
+
 # Install collector
 helm upgrade -i dynatrace-collector open-telemetry/opentelemetry-collector -f collector-values.yaml
 
