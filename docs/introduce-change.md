@@ -34,6 +34,12 @@ Now apply the change by running this command:
 kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 ```
 
+You should see:
+
+```
+configmap/my-otel-demo-flagd-config configured
+```
+
 The application will now generate errors when emptying the users cart.
 It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.
 
