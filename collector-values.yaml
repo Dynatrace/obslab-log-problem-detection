@@ -63,6 +63,9 @@ config:
           - tag_name: dt.cost.costcenter
             key: costCentre
             from: pod
+          - tag_name: supportInfo
+            key: supportInfo
+            from: pod
       # How to associate the data to a pod (order matters)
       pod_association:
         - sources:
