@@ -22,5 +22,5 @@ curl -X POST "$DT_URL_OBSLAB_LOG_PROBLEM_DETECTION/api/v2/events/ingest" \
     }
   }"
 
-
+echo
 echo "Now manually change cartServiceFailure.defaultValue to on in flags.yaml and apply using kubectl"
