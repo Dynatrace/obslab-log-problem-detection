@@ -23,7 +23,7 @@ Refresh the `cartservice` page and near the bottom you should see the configurat
 
 ## Make Change
 
-Open this file: `.devcontainer/otel-demo/flags.yaml`
+Open this file: `flags.yaml`
 
 Change the `defaultValue` of `cartServiceFailure` from `"off"` to `"on"` (line Scroll to line `75`)
 
@@ -32,8 +32,9 @@ Change the `defaultValue` of `cartServiceFailure` from `"off"` to `"on"` (line S
 Now apply the change by running this command:
 
 ```
-kubectl apply -f .devcontainer/otel-demo/flags.yaml
+kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 ```
+
 <div class="grid cards" markdown>
 - [Click Here to Begin :octicons-arrow-right-24:](review-problem.md)
 </div>

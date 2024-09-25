@@ -72,7 +72,7 @@ data:
             "on": true,
             "off": false
           },
-          "defaultVariant": "off"
+          "defaultVariant": "on"
         },
         "paymentServiceFailure": {
           "description": "Fail payment service charge requests",
