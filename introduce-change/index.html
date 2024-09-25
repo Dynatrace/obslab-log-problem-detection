@@ -574,30 +574,23 @@
 <p>This simulates releasing new functionality to your users in production.</p>
 <h2 id="inform-dynatrace">Inform Dynatrace<a class="headerlink" href="#inform-dynatrace" title="Permanent link">#</a></h2>
 <p>First, inform Dynatrace that a change is about to occur.
-Namely, you are going to change the <code>cartServiceFailure</code> feature flag from <code>off</code> to <code>on</code>.</p>
+Namely, you are going to make a change to the <code>my-otel-demo-cartservice</code> service 
+by changing the <code>cartServiceFailure</code> feature flag from <code>off</code> to <code>on</code>.</p>
 <p>Tell Dynatrace about the upcoming change by sending an event (note: This event does <strong>not</strong> actually make the change; you need to do this).</p>
-<p>A wrapper script to help you with this.</p>
 <p>Run the following:</p>
-<div class="highlight"><pre><span></span><code>./runtimeChange.sh cartservice cartServiceFailure on
+<div class="highlight"><pre><span></span><code>./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
 </code></pre></div>
-<p>You should see output signifying an event has been successfully sent:</p>
-<div class="highlight"><pre><span></span><code>{
-  &quot;reportCount&quot;:1,
-  &quot;eventIngestResults&quot;:[{
-    &quot;correlationId&quot;:&quot;abcd1234abcd1234&quot;,
-    &quot;status&quot;:&quot;OK&quot;
-  }]
-}
-</code></pre></div>
-<p>Refresh the <code>cartservice</code> page and near the bottom you should see the configuration change event.</p>
+<p>Refresh the <code>my-otel-demo-cartservice</code> page and near the bottom you should see the configuration change event.</p>
 <p><img alt="configuration changed event" src="../images/configuration-change-event.png" /></p>
 <h2 id="make-change">Make Change<a class="headerlink" href="#make-change" title="Permanent link">#</a></h2>
-<p>Open this file: <code>.devcontainer/otel-demo/flags.yaml</code></p>
+<p>Open this file: <code>flags.yaml</code></p>
 <p>Change the <code>defaultValue</code> of <code>cartServiceFailure</code> from <code>"off"</code> to <code>"on"</code> (line Scroll to line <code>75</code>)</p>
 <p><img alt="feature flag YAML" src="../images/change-feature-flag.png" /></p>
 <p>Now apply the change by running this command:</p>
-<div class="highlight"><pre><span></span><code>kubectl apply -f .devcontainer/otel-demo/flags.yaml
+<div class="highlight"><pre><span></span><code>kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 </code></pre></div>
+<p>The application will now generate errors when emptying the users cart.
+It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.</p>
 <div class="grid cards">
 <ul>
 <li><a href="../review-problem/">Click Here to Continue <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>
