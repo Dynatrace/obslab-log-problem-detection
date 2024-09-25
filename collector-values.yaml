@@ -101,7 +101,17 @@ config:
             - set(attributes["dt.kubernetes.workload.kind"], "daemonset") where IsString(attributes["k8s.daemonset.name"])
             - set(attributes["dt.kubernetes.workload.name"], attributes["k8s.daemonset.name"]) where IsString(attributes["k8s.daemonset.name"])
             - set(attributes["dt.kubernetes.cluster.id"], attributes["k8s.cluster.uid"]) where IsString(attributes["k8s.cluster.uid"])
-
+        - context: log
+          # statements:
+          #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cartservice"
+          statements:
+            # Case insensitive match
+            # - set(attributes["alertme"], true)
+            #   where resource.attributes["service.name"] == "cartservice"
+            #   and IsMatch(body, "(?i)getcartasync.*")
+            - set(attributes["alertme"], true)
+              where resource.attributes["service.name"] == "cartservice"
+              and IsMatch(body, "GetCartAsync.*")
   exporters:
     debug:
       verbosity: detailed
@@ -110,6 +120,9 @@ config:
       headers:
         Authorization: "Api-Token ${env:DT_API_TOKEN}"
   service:
+    telemetry:
+      logs:
+        level: debug
     pipelines:
       metrics:
         receivers: [otlp]
