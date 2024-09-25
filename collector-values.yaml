@@ -108,6 +108,8 @@ config:
           # statements:
           #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cartservice"
           statements:
+            # Use string "true" here
+            # not boolean as it is more flexible in the future
             # Case insensitive match
             # - set(attributes["alertme"], "true")
             #   where resource.attributes["service.name"] == "cartservice"
