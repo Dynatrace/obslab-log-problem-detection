@@ -23,7 +23,7 @@ In Dynatrace:
     * `events.ingest`
 
 #### API Token Permissions Explained
-* `logs.ingest` is required to send log entries into Dynatrace
+* `logs.ingest`, `metrics.ingest` and `openTelemetryTrace.ingest` are required to send the relevant telemetry data into Dynatrace
 * `events.ingest` is required to send the `CUSTOM_CONFIGURATION` event into Dynatrace
 
 ## Start Demo

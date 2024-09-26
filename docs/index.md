@@ -6,6 +6,13 @@ You will induce a problem which [Dynatrace DAVIS](https://www.dynatrace.com/plat
 
 The logs include span and trace IDs meaning you will be easily able to drill between signal types to see logs in the context of the distributed trace and vice versa.
 
+!!! tip
+    Right click and "open image in new tab"
+    to see large image
+
+![problem details](images/problem-details.png)
+
+
 ## How is the problem created?
 You will release a new feature into production. For demo purposes, this new feature intentionally introduces failure into the system.
 
@@ -24,7 +31,7 @@ This demo uses the [OpenTelemetry demo application](https://opentelemetry.io/doc
 
 | Deployment         | Tutorial Compatible |
 |--------------------|---------------------|
-| Dynatrace Managed  | ✔️                 |
+| Dynatrace Managed  | ❌                 |
 | Dynatrace SaaS     | ✔️                 |
 
 <div class="grid cards" markdown>

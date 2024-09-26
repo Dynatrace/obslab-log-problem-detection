@@ -8,6 +8,7 @@ echo "Changing feature flag key: $2 to $3 for service: $1"
 # Step 1
 # Inform Dynatrace that a configuration change is occurring
 ##############
+
 curl -X POST "$DT_URL_OBSLAB_LOG_PROBLEM_DETECTION/api/v2/events/ingest" \
   -H "accept: application/json; charset=utf-8" -H "Authorization: Api-Token $DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION" -H "Content-Type: application/json; charset=utf-8" \
   -d "{

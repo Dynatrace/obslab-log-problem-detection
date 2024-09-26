@@ -7,11 +7,12 @@ nav:
   - '3. Installation Explained': installation-explained.md
   - '4. Access User Interface': access-ui.md
   - '5. Validate Observability Data': view-observability-data.md
-  - '6. Introduce System Change': introduce-change.md
-  - '7. Review Problem': review-problem.md
-  - '8. Cleanup': cleanup.md
-  - '9. Resources': resources.md
-  - "10. What's Next?": whats-next.md
+  - '6. Build OpenPipeline Alert': build-openpipeline-alert.md
+  - '7. Introduce System Change': introduce-change.md
+  - '8. Review Problem': review-problem.md
+  - '9. Cleanup': cleanup.md
+  - '10. Resources': resources.md
+  - "11. What's Next?": whats-next.md
 theme:
   name: material
   palette:

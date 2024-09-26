@@ -16,6 +16,9 @@ Wait for all pods to be Ready (can take up to 10mins)
 kubectl wait --for condition=Ready pod --timeout=10m --all
 ```
 
+The command will appear to hang until all pods are available.
+At which point the pods will be listed and the command will return.
+
 <div class="grid cards" markdown>
 - [Click Here to Continue :octicons-arrow-right-24:](access-ui.md)
 </div>
