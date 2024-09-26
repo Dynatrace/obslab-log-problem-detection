@@ -20,7 +20,7 @@ default:
 components:
   cartService:
     podAnnotations:
-      ownedBy: adam
+      ownedBy: teamA
       product: otel-demo-app
       costCentre: centre1
       supportInfo: |+
