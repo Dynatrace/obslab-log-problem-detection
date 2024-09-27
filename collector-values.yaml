@@ -66,6 +66,12 @@ config:
           - tag_name: supportInfo
             key: supportInfo
             from: pod
+          - tag: deployment.releasae_product
+            key: product
+            from: pod
+          - tag: deployment.release_stage
+            key: environment
+            from: pod
       # How to associate the data to a pod (order matters)
       pod_association:
         - sources:

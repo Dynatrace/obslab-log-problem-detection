@@ -23,6 +23,7 @@ components:
       ownedBy: teamA
       product: otel-demo-app
       costCentre: centre1
+      environment: production
       supportInfo: |+
         ## Cart Service Issues Support Information
         If cartService is having issues, please contact the owner
