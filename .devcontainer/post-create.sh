@@ -36,8 +36,8 @@ fi
 
 #############################################################################
 # Replace placeholders for notebook
-sed -i "s#FULL_APPS_URL_PLACEHOLDER#$full_apps_url#g" otel-demo-values.yaml
-sed -i "s#DOCUMENT_ID_PLACEHOLDER#$DT_NOTEBOOK_ID_LOG_PROBLEM_DETECTION#g" otel-demo-values.yaml
+sed -i "s@FULL_APPS_URL_PLACEHOLDER@$full_apps_url@g" otel-demo-values.yaml
+sed -i "s@DOCUMENT_ID_PLACEHOLDER@$DT_NOTEBOOK_ID_LOG_PROBLEM_DETECTION@g" otel-demo-values.yaml
 
 #############################################################################
 # Create DT API secret for collector
