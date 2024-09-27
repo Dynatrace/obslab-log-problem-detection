@@ -1,0 +1,1199 @@
+{
+    "version": "6",
+    "defaultTimeframe": {
+        "from": "now()-30m",
+        "to": "now()"
+    },
+    "sections": [
+        {
+            "id": "acbd1234-1234-dead-beef-fbf2ae81d77e",
+            "type": "markdown",
+            "markdown": "# ☎️ Contact List \nRedis is a key service which also impacts downstream partner services.\n\n## Follow this Checklist NOW!\n\n1. Raise a Major Incident\n1. Notify the [on call incident commander](https://internal.example/oncall/inccommander)\n1. Also contact these individuals:\n- John Smith: `john.smith@example.com`\n- Susanne Barker: `susanne.b@partner.com`\n\n## Begin Troubleshooting\n\nNow action the initial troubleshooting steps below.\n\nIf the problem and solution is not apparent, raise an issue with [teamA](https://example.com/tickets/new/teamA)"
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-cdd9d218426f",
+            "type": "dql",
+            "title": "Cart Service Failure Rate",
+            "showTitle": false,
+            "state": {
+                "input": {
+                    "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                    "timeframe": {
+                        "from": "now()-30m",
+                        "to": "now()"
+                    }
+                },
+                "visualization": "lineChart",
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "timeseries by:{dt.entity.service}, `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count)\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                                "timezone": "Australia/Brisbane",
+                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                                "scannedRecords": 15,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 0,
+                                "scannedDataPoints": 300,
+                                "analysisTimeframe": {
+                                    "start": "2024-09-26T23:10:00.000Z",
+                                    "end": "2024-09-26T23:41:00.000Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 1134,
+                                "notifications": [],
+                                "queryId": "e090700c-7d8d-40c3-984f-630e73968aa6",
+                                "sampled": false
+                            },
+                            "metrics": [
+                                {
+                                    "metric.key": "dt.service.request.failure_count",
+                                    "displayName": "Service failure count",
+                                    "description": "Number of failed requests received by a given service. To learn how Dynatrace detects and analyzes services, see [Services](https://dt-url.net/am-services).",
+                                    "unit": "count",
+                                    "fieldName": "A: avg(dt.service.request.failure_count)"
+                                }
+                            ]
+                        },
+                        "types": []
+                    },
+                    "notifications": [],
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    },
+                    "dateTime": "2024-09-26T23:40:07.934Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-30m",
+                            "to": "now()"
+                        },
+                        "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1"
+                    }
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "xAxisScaling": "analyzedTimeframe",
+                        "categoricalBarChartSettings": {
+                            "categoryAxisLabel": "dt.entity.service.name",
+                            "valueAxisLabel": "interval",
+                            "tooltipVariant": "single"
+                        },
+                        "truncationMode": "middle",
+                        "hiddenLegendFields": [
+                            "dt.entity.service"
+                        ],
+                        "legend": {
+                            "hidden": true
+                        }
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "recordField": "error",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto"
+                        },
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue",
+                        "dataMappings": {},
+                        "displayedFields": []
+                    },
+                    "histogram": {
+                        "dataMappings": []
+                    }
+                },
+                "state": "success",
+                "davis": {
+                    "enabled": false,
+                    "componentState": {
+                        "analyzerHints": {
+                            "dt.statistics.ui.ForecastAnalyzer": {
+                                "unit": {
+                                    "unitCategory": "unspecified",
+                                    "baseUnit": "count"
+                                }
+                            }
+                        },
+                        "selectedAnalyzerName": "dt.statistics.ui.ForecastAnalyzer",
+                        "inputData": {
+                            "dt.statistics.ui.ForecastAnalyzer": {
+                                "generalParameters": {
+                                    "timeframe": {
+                                        "startTime": "now-24h",
+                                        "endTime": "now"
+                                    },
+                                    "resolveDimensionalQueryData": true,
+                                    "logVerbosity": "INFO"
+                                },
+                                "forecastHorizon": 100,
+                                "forecastOffset": 1,
+                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 100"
+                            }
+                        },
+                        "lastExecution": {
+                            "analyzerName": "dt.statistics.ui.ForecastAnalyzer",
+                            "inputData": {
+                                "dt.statistics.ui.ForecastAnalyzer": {
+                                    "generalParameters": {
+                                        "timeframe": {
+                                            "startTime": "now-24h",
+                                            "endTime": "now"
+                                        },
+                                        "resolveDimensionalQueryData": true,
+                                        "logVerbosity": "INFO"
+                                    },
+                                    "forecastHorizon": 100,
+                                    "forecastOffset": 1,
+                                    "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 100"
+                                }
+                            }
+                        },
+                        "resultState": {}
+                    },
+                    "davisVisualization": {
+                        "selectedOutputs": [
+                            "-643747063"
+                        ]
+                    }
+                }
+            },
+            "drilldownPath": [],
+            "showInput": false,
+            "height": 160
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-0f2e12d6afcf",
+            "type": "markdown",
+            "markdown": "# Step 1: Problems relating to Configuration Changes\n\nThis chart shows configuration change events, the feature flag key (eg. `cartServiceFailure`) and new value (eg. `on` or `off`) and any related problems (different colour bars).\n\n\n\nSo, did a recent configuration change cause an issue?"
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-7f786349c14f",
+            "type": "dql",
+            "showTitle": false,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
+                    "timeframe": {
+                        "from": "now()-24h",
+                        "to": "now()"
+                    }
+                },
+                "visualization": "barChart",
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries by:{feature_flag.key, defaultValue}, count()\n| append \n\t[\n\t\tfetch dt.davis.problems\n\t\t| filter matchesPhrase(event.name, \"redis\")\n\t\t| makeTimeseries by:{event.name}, count()\n\t]",
+                                "timezone": "Australia/Brisbane",
+                                "query": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
+                                "scannedRecords": 73,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 25062,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2024-09-25T23:26:18.136Z",
+                                    "end": "2024-09-26T23:26:18.136Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 46,
+                                "notifications": [],
+                                "queryId": "5f9eba1f-32b2-41b3-b2da-03d339b719a9",
+                                "sampled": false
+                            }
+                        },
+                        "types": [
+                            {
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "feature_flag.key": {
+                                        "type": "string"
+                                    },
+                                    "defaultValue": {
+                                        "type": "string"
+                                    },
+                                    "count()": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    144
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "event.name": {
+                                        "type": "undefined"
+                                    }
+                                },
+                                "indexRange": [
+                                    0,
+                                    0
+                                ]
+                            },
+                            {
+                                "mappings": {
+                                    "timeframe": {
+                                        "type": "timeframe"
+                                    },
+                                    "interval": {
+                                        "type": "duration"
+                                    },
+                                    "feature_flag.key": {
+                                        "type": "undefined"
+                                    },
+                                    "defaultValue": {
+                                        "type": "undefined"
+                                    },
+                                    "count()": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "double"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    144
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "event.name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    1,
+                                    2
+                                ]
+                            }
+                        ]
+                    },
+                    "notifications": [],
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    },
+                    "dateTime": "2024-09-26T23:26:18.296Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-24h",
+                            "to": "now()"
+                        },
+                        "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]"
+                    }
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "xAxisScaling": "analyzedTimeframe",
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "categoricalBarChartSettings": {
+                            "categoryAxis": "event.name",
+                            "valueAxis": [
+                                "interval"
+                            ],
+                            "categoryAxisLabel": "event.name",
+                            "valueAxisLabel": "interval",
+                            "tooltipVariant": "single"
+                        },
+                        "fieldMapping": {
+                            "timestamp": "timeframe",
+                            "leftAxisValues": [
+                                "count()"
+                            ],
+                            "leftAxisDimensions": [
+                                "feature_flag.key",
+                                "defaultValue",
+                                "event.name"
+                            ]
+                        },
+                        "truncationMode": "middle",
+                        "hiddenLegendFields": []
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "recordField": "timestamp",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto"
+                        },
+                        "colorMode": "color-palette",
+                        "colorPalette": "blue",
+                        "dataMappings": {
+                            "value": "interval"
+                        },
+                        "displayedFields": [
+                            "feature_flag.key"
+                        ]
+                    },
+                    "histogram": {
+                        "dataMappings": [
+                            {
+                                "valueAxis": "interval",
+                                "rangeAxis": ""
+                            }
+                        ]
+                    }
+                },
+                "state": "success"
+            }
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-0abf7720e108",
+            "type": "markdown",
+            "markdown": "## Step 2: Logs\nInvestigate the logs..."
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-7400705bac7b",
+            "type": "dql",
+            "title": "Fetch logs",
+            "showTitle": true,
+            "drilldownPath": [],
+            "state": {
+                "input": {
+                    "value": "fetch logs\n| filter matchesPhrase(content, \"redis\")\n| sort timestamp desc\n| limit 100",
+                    "timeframe": {
+                        "from": "now()-24h",
+                        "to": "now()"
+                    }
+                },
+                "visualization": "table",
+                "querySettings": {
+                    "maxResultRecords": 1000,
+                    "defaultScanLimitGbytes": 500,
+                    "maxResultMegaBytes": 1,
+                    "defaultSamplingRatio": 10,
+                    "enableSampling": false
+                },
+                "result": {
+                    "code": 200,
+                    "value": {
+                        "records": [],
+                        "metadata": {
+                            "grail": {
+                                "canonicalQuery": "fetch logs\n| filter matchesPhrase(content, \"redis\")\n| sort timestamp desc\n| limit 100",
+                                "timezone": "Australia/Brisbane",
+                                "query": "fetch logs\n| filter matchesPhrase(content, \"redis\")\n| sort timestamp desc\n| limit 100",
+                                "scannedRecords": 120745,
+                                "dqlVersion": "V1_0",
+                                "scannedBytes": 9779195,
+                                "scannedDataPoints": 0,
+                                "analysisTimeframe": {
+                                    "start": "2024-09-25T05:11:36.907Z",
+                                    "end": "2024-09-26T05:11:36.907Z"
+                                },
+                                "locale": "en-US",
+                                "executionTimeMilliseconds": 28,
+                                "notifications": [],
+                                "queryId": "dcad1f9b-23ec-449d-b9d1-d5a148b0b699",
+                                "sampled": false
+                            }
+                        },
+                        "types": [
+                            {
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    1
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.deployment.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "service.name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "alertme": {
+                                        "type": "string"
+                                    },
+                                    "container.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.auth.origin": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.costcenter": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.product": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.service": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "dt.owner": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.ip": {
+                                        "type": "string"
+                                    },
+                                    "otel.scope.name": {
+                                        "type": "string"
+                                    },
+                                    "span_id": {
+                                        "type": "string"
+                                    },
+                                    "supportInfo": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.language": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.name": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.version": {
+                                        "type": "string"
+                                    },
+                                    "trace_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    0,
+                                    2
+                                ]
+                            },
+                            {
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "string"
+                                    },
+                                    "event.type": {
+                                        "type": "string"
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.deployment.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "service.name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "container.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.auth.origin": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.costcenter": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.product": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "dt.owner": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.ip": {
+                                        "type": "string"
+                                    },
+                                    "otel.scope.name": {
+                                        "type": "string"
+                                    },
+                                    "supportinfo": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.language": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.name": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.version": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    3,
+                                    4
+                                ]
+                            },
+                            {
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    1
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.deployment.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "service.name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "alertme": {
+                                        "type": "string"
+                                    },
+                                    "container.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.auth.origin": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.costcenter": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.product": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.service": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "dt.owner": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.ip": {
+                                        "type": "string"
+                                    },
+                                    "otel.scope.name": {
+                                        "type": "string"
+                                    },
+                                    "span_id": {
+                                        "type": "string"
+                                    },
+                                    "supportInfo": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.language": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.name": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.version": {
+                                        "type": "string"
+                                    },
+                                    "trace_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    5,
+                                    20
+                                ]
+                            },
+                            {
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    1
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.deployment.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "service.name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "container.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.auth.origin": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.costcenter": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.product": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.service": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "dt.owner": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.ip": {
+                                        "type": "string"
+                                    },
+                                    "otel.scope.name": {
+                                        "type": "string"
+                                    },
+                                    "span_id": {
+                                        "type": "string"
+                                    },
+                                    "supportInfo": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.language": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.name": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.version": {
+                                        "type": "string"
+                                    },
+                                    "trace_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    21,
+                                    30
+                                ]
+                            },
+                            {
+                                "mappings": {
+                                    "timestamp": {
+                                        "type": "timestamp"
+                                    },
+                                    "content": {
+                                        "type": "string"
+                                    },
+                                    "dt.entity.cloud_application_instance": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.cluster.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.kind": {
+                                        "type": "string"
+                                    },
+                                    "dt.kubernetes.workload.name": {
+                                        "type": "string"
+                                    },
+                                    "dt.source_entity": {
+                                        "type": "string"
+                                    },
+                                    "event.type": {
+                                        "type": "string"
+                                    },
+                                    "host.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.deployment.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.namespace.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.uid": {
+                                        "type": "string"
+                                    },
+                                    "loglevel": {
+                                        "type": "string"
+                                    },
+                                    "service.name": {
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "type": "string"
+                                    },
+                                    "container.id": {
+                                        "type": "string"
+                                    },
+                                    "dt.auth.origin": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.costcenter": {
+                                        "type": "string"
+                                    },
+                                    "dt.cost.product": {
+                                        "type": "string"
+                                    },
+                                    "dt.openpipeline.pipelines": {
+                                        "type": "array",
+                                        "types": [
+                                            {
+                                                "mappings": {
+                                                    "element": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "indexRange": [
+                                                    0,
+                                                    0
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    "dt.owner": {
+                                        "type": "string"
+                                    },
+                                    "k8s.cluster.uid": {
+                                        "type": "string"
+                                    },
+                                    "k8s.node.name": {
+                                        "type": "string"
+                                    },
+                                    "k8s.pod.ip": {
+                                        "type": "string"
+                                    },
+                                    "otel.scope.name": {
+                                        "type": "string"
+                                    },
+                                    "supportinfo": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.language": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.name": {
+                                        "type": "string"
+                                    },
+                                    "telemetry.sdk.version": {
+                                        "type": "string"
+                                    }
+                                },
+                                "indexRange": [
+                                    31,
+                                    32
+                                ]
+                            }
+                        ]
+                    },
+                    "notifications": [],
+                    "querySettings": {
+                        "maxResultRecords": 1000,
+                        "defaultScanLimitGbytes": 500,
+                        "maxResultMegaBytes": 1,
+                        "defaultSamplingRatio": 10,
+                        "enableSampling": false
+                    },
+                    "dateTime": "2024-09-26T05:11:37.362Z",
+                    "input": {
+                        "timeframe": {
+                            "from": "now()-24h",
+                            "to": "now()"
+                        },
+                        "value": "fetch logs\n| filter matchesPhrase(content, \"redis\")\n| sort timestamp desc\n| limit 100"
+                    }
+                },
+                "visualizationSettings": {
+                    "thresholds": [],
+                    "chartSettings": {
+                        "xAxisScaling": "analyzedTimeframe",
+                        "gapPolicy": "connect",
+                        "circleChartSettings": {
+                            "groupingThresholdType": "relative",
+                            "groupingThresholdValue": 0,
+                            "valueType": "relative"
+                        },
+                        "categoryOverrides": {},
+                        "curve": "linear",
+                        "pointsDisplay": "auto",
+                        "truncationMode": "middle",
+                        "categoricalBarChartSettings": {
+                            "categoryAxis": "dt.kubernetes.workload.name",
+                            "categoryAxisLabel": "dt.kubernetes.workload.name",
+                            "valueAxis": [],
+                            "valueAxisLabel": "",
+                            "tooltipVariant": "single"
+                        }
+                    },
+                    "singleValue": {
+                        "showLabel": true,
+                        "label": "",
+                        "prefixIcon": "",
+                        "recordField": "timestamp",
+                        "autoscale": true,
+                        "alignment": "center",
+                        "colorThresholdTarget": "value"
+                    },
+                    "table": {
+                        "rowDensity": "condensed",
+                        "enableSparklines": false,
+                        "hiddenColumns": [],
+                        "linewrapEnabled": false,
+                        "lineWrapIds": [],
+                        "monospacedFontEnabled": false,
+                        "monospacedFontColumns": [],
+                        "firstVisibleRowIndex": 0,
+                        "columnWidths": {},
+                        "columnTypeOverrides": []
+                    },
+                    "honeycomb": {
+                        "shape": "hexagon",
+                        "legend": {
+                            "hidden": false,
+                            "position": "auto"
+                        },
+                        "colorMode": "color-palette",
+                        "colorPalette": "categorical",
+                        "dataMappings": {
+                            "value": "content"
+                        },
+                        "displayedFields": [
+                            "dt.entity.cloud_application_instance"
+                        ]
+                    },
+                    "histogram": {
+                        "dataMappings": []
+                    }
+                },
+                "state": "success"
+            }
+        },
+        {
+            "id": "acbd1234-1234-dead-beef-0ed792be8a6b",
+            "type": "markdown",
+            "markdown": "## Still Stuck?\n\nIf you still cannot figure out the issue, please refer to instructions at the top of this notebook to escalate to the relevant people."
+        }
+    ]
+}

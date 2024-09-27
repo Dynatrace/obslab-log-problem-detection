@@ -42,12 +42,18 @@
 
 	// Add recommended secrets
 	"secrets": {
-		"DT_URL_OBSLAB_LOG_PROBLEM_DETECTION": {
-			 "description": "eg. https://abc12345.live.dynatrace.com"
+		"DT_ENV_ID_OBSLAB_LOG_PROBLEM_DETECTION": {
+			 "description": "eg. abc12345 from https://abc12345.apps.dynatrace.com"
+	 },
+		"DT_ENV_OBSLAB_LOG_PROBLEM_DETECTION": {
+			"description": "live, sprint or dev. Leave blank for live. Defaults to live"
 	 },
 	   "DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION": {
 			 "description": "Dynatrace API token with these permissions: `logs.ingest`, `events.ingest`, `settings.read`, `settings.write`"
-	 }
+	 },
+	   "DT_NOTEBOOK_ID_LOG_PROBLEM_DETECTION": {
+		     "description": "The notebook ID"
+	   }
  	}
 
 }
