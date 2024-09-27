@@ -117,11 +117,6 @@ config:
             - set(attributes["alertme"], "true")
               where resource.attributes["service.name"] == "cartservice"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
-            # Any log line containing "error" (case insensitive)
-            # should have the status set to ERROR
-            # regardless of the original status set by the developer
-            - set(attributes["status"], "ERROR")
-              where IsMatch(body, "(?i).*error.*")
   exporters:
     debug:
       verbosity: detailed
