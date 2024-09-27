@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../introduce-change/">
+        <link rel="prev" href="../view-observability-data/">
       
       
-        <link rel="next" href="../cleanup/">
+        <link rel="next" href="../introduce-change/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -20,7 +20,7 @@
     
     
       
-        <title>8. Review Problem - Dynatrace Observability Lab: Problem Detection with Logs</title>
+        <title>6. Build OpenPipeline Alert - Dynatrace Observability Lab: Problem Detection with Logs</title>
       
     
     
@@ -71,11 +71,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#explore-problem-details" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -108,7 +103,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              8. Review Problem
+              6. Build OpenPipeline Alert
             
           </span>
         </div>
@@ -358,10 +353,17 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../build-openpipeline-alert/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -370,6 +372,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -398,28 +401,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    8. Review Problem
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../review-problem/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -428,102 +413,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#explore-problem-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explore Problem Details
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logs-contain-key-metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logs Contain Key Metadata
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-happened-leading-to-this-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      What Happened Leading to this Error?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#navigate-from-log-to-trace" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate from Log to Trace
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runbook-wheres-the-runbook" class="md-nav__link">
-    <span class="md-ellipsis">
-      Runbook! Where's the runbook!?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Runbook! Where's the runbook!?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#immediate-action" class="md-nav__link">
-    <span class="md-ellipsis">
-      Immediate Action
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-1-error-trend" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart 1: Error Trend
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-2-change-caused-the-failure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart 2: Change Caused the Failure
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -606,92 +495,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#explore-problem-details" class="md-nav__link">
-    <span class="md-ellipsis">
-      Explore Problem Details
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#logs-contain-key-metadata" class="md-nav__link">
-    <span class="md-ellipsis">
-      Logs Contain Key Metadata
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-happened-leading-to-this-error" class="md-nav__link">
-    <span class="md-ellipsis">
-      What Happened Leading to this Error?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#navigate-from-log-to-trace" class="md-nav__link">
-    <span class="md-ellipsis">
-      Navigate from Log to Trace
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#runbook-wheres-the-runbook" class="md-nav__link">
-    <span class="md-ellipsis">
-      Runbook! Where's the runbook!?
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Runbook! Where's the runbook!?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#immediate-action" class="md-nav__link">
-    <span class="md-ellipsis">
-      Immediate Action
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-1-error-trend" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart 1: Error Trend
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#chart-2-change-caused-the-failure" class="md-nav__link">
-    <span class="md-ellipsis">
-      Chart 2: Change Caused the Failure
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -708,107 +511,37 @@
   
 
 
-  <h1>8. Review Problem</h1>
+  <h1>6. Build OpenPipeline Alert</h1>
 
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Right click each image and "Open image in new tab" to see a larger version.</p>
-</div>
-<p>After a few moments, DAVIS will detect the issue and create a problem.</p>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>Let's see what Dynatrace can tell us about this issue...</p>
-</div>
-<p>Press <code>ctrl + k</code> and search for <code>Problems</code> this will open the problems screen.</p>
-<p>You should see a problem titled: <code>Redis connection errors</code></p>
-<p><img alt="problem screen" src="../images/problem-screen.png" /></p>
-<h2 id="explore-problem-details">Explore Problem Details<a class="headerlink" href="#explore-problem-details" title="Permanent link">#</a></h2>
-<p><img alt="problem details" src="../images/problem-details.png" /></p>
-<p>Opening the problem record, you will see that it has effected one entity: the <code>my-otel-demo-cartservice</code>.</p>
-<p>Navigate to the <code>Logs</code> panel. Click <code>Run query</code> next to <code>Show x errors</code> (your number of errors may differ from the screenshot)</p>
-<p><img alt="logs panel 1" src="../images/logs-panel-1.png" /></p>
-<h2 id="logs-contain-key-metadata">Logs Contain Key Metadata<a class="headerlink" href="#logs-contain-key-metadata" title="Permanent link">#</a></h2>
-<p>Expand the log entry and notice you have some key metadata available:</p>
+<p>Telemetry is flowing into Dynatrace. Logs and spans are being enriched with metadata from both the Kubernetes API and custom pod annotations that we've added to the <code>cartservice</code>.</p>
+<p>As the developer, you already know that if an error log occurs that contains the content:</p>
+<div class="highlight"><pre><span></span><code>Wasn&#39;t able to connect to Redis.
+</code></pre></div>
+<p>This is serious enough that you immediately want an alert. So you've added the following rule to the collector:</p>
+<div class="highlight"><pre><span></span><code>processors:
+  transform:
+    log_statements:
+      - context: log
+        statements:
+          - set(attributes[&quot;alertme&quot;], &quot;true&quot;)
+            where resource.attributes[&quot;service.name&quot;] == &quot;cartservice&quot;
+            and IsMatch(body, &quot;(?i)wasn&#39;t able to connect to redis.*&quot;)
+</code></pre></div>
+<p>This uses the <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor" target="_blank">transform processor</a> to act on each log line,
+as it flows through the collector.</p>
+<p>Read the rule as follows:</p>
 <ul>
-<li>Timestamp of this log line</li>
-<li><code>host.name</code> (which equates to the container name)</li>
-<li><code>loglevel</code> ie. <code>ERROR</code></li>
-<li>OpenTelemetry <code>span_id</code> and <code>trace_id</code></li>
-<li>Ownership information: <code>dt.owner</code></li>
-<li>Cost information: <code>dt.cost.product</code> and <code>dt.cost.costcenter</code></li>
+<li>If the log originates from the <code>cartservice</code></li>
+<li>and the log line contains the phrase <code>wasn't able to connect to redis</code> (case insensitive)</li>
+<li>add a new attribute called <code>alertme</code> and set the value to <code>"true"</code></li>
 </ul>
-<p><img alt="log entry 1" src="../images/log-entry-1.png" /></p>
-<h2 id="what-happened-leading-to-this-error">What Happened Leading to this Error?<a class="headerlink" href="#what-happened-leading-to-this-error" title="Permanent link">#</a></h2>
-<p>Now click <code>Show surrounding logs</code> this shows <code>ALL</code> log lines with the same <code>trace_id</code>.</p>
-<p>You can also choose <code>based on topology</code> to see the error in context of all other logs on that service at the time of the error.</p>
-<p>This means you can see precisely what led up to the failure. In this case:</p>
-<ul>
-<li>The system retrieved the cart contents</li>
-<li>A pricing quote was calculated</li>
-<li>The system performed a currency conversion</li>
-<li>The user requested to empty their cart</li>
-<li>The error occured whilst trying to empty the cart</li>
-</ul>
-<p><img alt="surrounding logs panel" src="../images/surrounding-logs-1.png" /></p>
-<p>Notice that an Error status code and detailed message is also available:</p>
-<ul>
-<li>The <code>statuscode</code> is <code>FailedPrecondition</code></li>
-<li>The <code>detail</code> provides an error message: <code>Can't access cart storage. System.ApplicationException: Wasn't able to connect to redis...</code></li>
-<li>The <code>detail</code> field also provides a reference to the line of code (LOC) where this error occured.</li>
-</ul>
-<p><img alt="log entry 2" src="../images/log-entry-2.png" /></p>
-<h2 id="navigate-from-log-to-trace">Navigate from Log to Trace<a class="headerlink" href="#navigate-from-log-to-trace" title="Permanent link">#</a></h2>
-<p>In this demo application logs, spans and traces are all correctly instrumented with the <code>span_id</code> and <code>trace_id</code> field. Meaning logs can be correlated and linked to traces.</p>
-<p>Let's navigate from the log line to the trace view to get a wider view of the error and what hte user was trying to do during this action.</p>
-<ul>
-<li>Click the value field of the <code>trace_id</code>. This should open the <code>Explore</code> context menu.</li>
-<li>Select <code>Open field with</code> (<code>open record with</code> also opens the trace but "jumps" you down the trace to the error location)</li>
-<li>Choose to open with the <code>Distributed traces</code> app</li>
-</ul>
-<p><img alt="explore context menu" src="../images/explore-context-menu.png" />
-<img alt="open with distributed traces app" src="../images/open-with-distributed-traces.png" /></p>
-<p>The trace view gives a deeper, more contextual view of what we've already seen from the logs.</p>
-<p>The user tries to place an order, there are currency conversions and quotations occurring.
-Finally the <code>EmptyCart</code> method is called, which fails.</p>
-<p><img alt="opentelemetry trace" src="../images/trace-1.png" /></p>
-<h2 id="runbook-wheres-the-runbook">Runbook! Where's the runbook!?<a class="headerlink" href="#runbook-wheres-the-runbook" title="Permanent link">#</a></h2>
-<p>Recall that the developer provided us with a handy runbook.</p>
-<p>Navigate back to the problem and notice the problem description contains a link to the Ops runbook.</p>
-<p><img alt="problem markdown" src="../images/problem-markdown.png" /></p>
-<p>Follow the link to the runbook.</p>
-<h3 id="immediate-action">Immediate Action<a class="headerlink" href="#immediate-action" title="Permanent link">#</a></h3>
-<p>The first section of the runbook provides clear instructions on what to do and who to contact.</p>
-<h3 id="chart-1-error-trend">Chart 1: Error Trend<a class="headerlink" href="#chart-1-error-trend" title="Permanent link">#</a></h3>
-<div class="admonition tip">
-<p class="admonition-title">Re-run sections</p>
-<p>You may need to re-run the sections to refresh the data.
-Just click each chart and click the <code>Run</code> button</p>
-</div>
-<p>The first chart shows a increased failure rate for the <code>cartservice</code>.</p>
-<p>OK, we're on to something...</p>
-<p>DAVIS told us (and our investigation confirmed) that the problem originated in the <code>cartservice</code>.</p>
-<p>We know that the problem was caused by a failure to connect to Redis. But what caused that error? Did something change?</p>
-<h3 id="chart-2-change-caused-the-failure">Chart 2: Change Caused the Failure<a class="headerlink" href="#chart-2-change-caused-the-failure" title="Permanent link">#</a></h3>
-<p>Chart two shows both configuration events and problems on the same chart.</p>
-<p><img alt="configuration changes and problems" src="../images/problems-and-change-chart.png" /></p>
-<div class="admonition tip">
-<p class="admonition-title">Change is the cause of most failures</p>
-<p>Something changed on the <code>cartservice</code> immediately prior
-to an issue occuring.</p>
-<p>Thanks to the "configuration changed" event we have all necessary information to understand the true root cause.</p>
-</div>
-<p><img alt="events panel 1" src="../images/events-panel-1.png" />
-<img alt="configuration changed" src="../images/configuration-change-event.png" /></p>
-<div class="admonition success">
-<p class="admonition-title">🎉Congratulations 🎉</p>
-<p>You have successfully completed this
-Observability Lab. Continue below to clean up your environment.</p>
-</div>
-<div class="grid cards">
-<ul>
-<li><a href="../cleanup/">Click Here to Begin <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>
-</ul>
-</div>
+<p>In other words, the following log line would <strong>not</strong> be modified:</p>
+<p><strong>input</strong>
+<div class="highlight"><pre><span></span><code>{
+    &quot;status&quot;: &quot;INFO&quot;,
+    &quot;content&quot;: &quot;some log line text here&quot;
+}
+</code></pre></div></p>
 
 
 

@@ -12,7 +12,7 @@
         <link rel="prev" href="../access-ui/">
       
       
-        <link rel="next" href="../introduce-change/">
+        <link rel="next" href="../build-openpipeline-alert/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -70,6 +70,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#use-the-logs-app" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -343,6 +348,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    5. Validate Observability Data
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -353,6 +369,70 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-logs-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the logs app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-services-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the services screen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-notebooks-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the notebooks app
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../build-openpipeline-alert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Build OpenPipeline Alert
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -368,7 +448,7 @@
         
   
   <span class="md-ellipsis">
-    6. Introduce System Change
+    7. Introduce System Change
   </span>
   
 
@@ -388,7 +468,7 @@
         
   
   <span class="md-ellipsis">
-    7. Review Problem
+    8. Review Problem
   </span>
   
 
@@ -408,7 +488,7 @@
         
   
   <span class="md-ellipsis">
-    8. Cleanup
+    9. Cleanup
   </span>
   
 
@@ -428,7 +508,7 @@
         
   
   <span class="md-ellipsis">
-    9. Resources
+    10. Resources
   </span>
   
 
@@ -448,7 +528,7 @@
         
   
   <span class="md-ellipsis">
-    10. What's Next?
+    11. What's Next?
   </span>
   
 
@@ -475,6 +555,41 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-logs-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the logs app
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-services-screen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the services screen
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-the-notebooks-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use the notebooks app
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -494,14 +609,35 @@
   <h1>5. Validate Observability Data</h1>
 
 <p>In Dynatrace, press <code>ctrl + k</code> and search for <code>Services</code>. Dynatrace creates service entities based on the incoming span data.
-The logs are also available for each service.</p>
+The logs are also available for <a href="https://opentelemetry.io/docs/demo/telemetry-features/log-coverage/" target="_blank">some services</a></p>
+<p>In this demo, you will be focussing on the <code>Cart</code>  which does have logs and is written in <code>.NET</code>.</p>
 <p>You can also query data via <a href="https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-notebooks/notebooks" target="_blank">notebooks</a>
 and <a href="https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-notebooks/dashboards-new" target="_blank">dashboards</a> (<code>ctrl + k</code> and search for <code>notebooks</code> or <code>dashboards</code>).</p>
-<p>For example, to validate logs are available for <code>cartservice</code>:</p>
+<p>For example, to validate logs are available for <code>cartservice</code>, use one of the following methods:</p>
+<h2 id="use-the-logs-app">Use the logs app<a class="headerlink" href="#use-the-logs-app" title="Permanent link">#</a></h2>
+<ul>
+<li>Open the <code>logs</code> app.</li>
+<li>Click the <code>+</code> icon and add a filter for <code>service.name</code> with a value <code>cartservice</code></li>
+<li>Run the query to see the latest <code>cartservice</code> logs</li>
+</ul>
+<p><img alt="cart service logs" src="../images/logs-screen-cartservice-filter.png" /></p>
+<h2 id="use-the-services-screen">Use the services screen<a class="headerlink" href="#use-the-services-screen" title="Permanent link">#</a></h2>
+<ul>
+<li>Open the <code>my-otel-demo-cartservice</code> service screen</li>
+<li>Click <code>Run query</code> on the logs panel</li>
+</ul>
+<p><img alt="logs on services screen" src="../images/logs-on-service-screen.png" /></p>
+<h2 id="use-the-notebooks-app">Use the notebooks app<a class="headerlink" href="#use-the-notebooks-app" title="Permanent link">#</a></h2>
+<ul>
+<li>Open the <code>notebooks</code> app</li>
+<li>Add a Dynatrace Query Language (DQL) tile</li>
+<li>Use the following DQL query:</li>
+</ul>
 <div class="highlight"><pre><span></span><code>fetch logs
 | filter service.name == &quot;cartservice&quot;
 | limit 10
 </code></pre></div>
+<p><img alt="logs in notebook" src="../images/logs-in-notebook.png" /></p>
 <div class="grid cards">
 <ul>
 <li><a href="../introduce-change/">Click Here to Continue <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>

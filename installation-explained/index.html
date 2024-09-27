@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wait-for-system" class="md-skip">
+        <a href="#hurry-up-and-wait" class="md-skip">
           Skip to content
         </a>
       
@@ -343,9 +343,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#hurry-up-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurry up and wait
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#wait-for-system" class="md-nav__link">
     <span class="md-ellipsis">
       Wait for System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait for Application
     </span>
   </a>
   
@@ -406,11 +424,31 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-openpipeline-alert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Build OpenPipeline Alert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../introduce-change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. Introduce System Change
+    7. Introduce System Change
   </span>
   
 
@@ -430,7 +468,7 @@
         
   
   <span class="md-ellipsis">
-    7. Review Problem
+    8. Review Problem
   </span>
   
 
@@ -450,7 +488,7 @@
         
   
   <span class="md-ellipsis">
-    8. Cleanup
+    9. Cleanup
   </span>
   
 
@@ -470,7 +508,7 @@
         
   
   <span class="md-ellipsis">
-    9. Resources
+    10. Resources
   </span>
   
 
@@ -490,7 +528,7 @@
         
   
   <span class="md-ellipsis">
-    10. What's Next?
+    11. What's Next?
   </span>
   
 
@@ -524,9 +562,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#hurry-up-and-wait" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hurry up and wait
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#wait-for-system" class="md-nav__link">
     <span class="md-ellipsis">
       Wait for System
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait for Application
     </span>
   </a>
   
@@ -552,14 +608,48 @@
 
   <h1>3. Installation Explained</h1>
 
+<h2 id="hurry-up-and-wait">Hurry up and wait<a class="headerlink" href="#hurry-up-and-wait" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Grab a Coffee</p>
+<p>Everything is installing. This can take a while.</p>
+</div>
 <p>The OpenTelemetry demo and the Dynatrace collector will be installed automatically.</p>
 <p>The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables (hint: <code>printenv</code> to see).</p>
 <p>They will also be stored in a Kubernetes secret:</p>
 <div class="highlight"><pre><span></span><code>kubectl get secret/dynatrace-otelcol-dt-api-credentials -o yaml
 </code></pre></div>
 <h2 id="wait-for-system">Wait for System<a class="headerlink" href="#wait-for-system" title="Permanent link">#</a></h2>
+<p><img alt="codespace loading" src="../images/codespace-loading.png" /></p>
+<p>Wait here until the terminal prompt looks like this (your username will differ).</p>
+<p><img alt="codespace interactive" src="../images/codespace-interactive.png" /></p>
+<h2 id="wait-for-application">Wait for Application<a class="headerlink" href="#wait-for-application" title="Permanent link">#</a></h2>
+<p>The Kubernetes cluster is available and the application is starting.</p>
 <p>Wait for all pods to be Ready (can take up to 10mins)</p>
 <div class="highlight"><pre><span></span><code>kubectl wait --for condition=Ready pod --timeout=10m --all
+</code></pre></div>
+<p>The command will appear to hang until all pods are available.</p>
+<p>When all pods are running, the output will look like this:</p>
+<div class="highlight"><pre><span></span><code>pod/dynatrace-collector-opentelemetry-collector-******-**** condition met
+pod/my-otel-demo-accountingservice-******-**** condition met
+pod/my-otel-demo-adservice-******-**** condition met
+pod/my-otel-demo-cartservice-******-**** condition met
+pod/my-otel-demo-checkoutservice-******-**** condition met
+pod/my-otel-demo-currencyservice-******-**** condition met
+pod/my-otel-demo-emailservice-******-**** condition met
+pod/my-otel-demo-flagd-******-**** condition met
+pod/my-otel-demo-frauddetectionservice-******-**** condition met
+pod/my-otel-demo-frontend-******-**** condition met
+pod/my-otel-demo-frontendproxy-******-**** condition met
+pod/my-otel-demo-imageprovider-******-**** condition met
+pod/my-otel-demo-kafka-******-**** condition met
+pod/my-otel-demo-loadgenerator-******-**** condition met
+pod/my-otel-demo-paymentservice-******-**** condition met
+pod/my-otel-demo-productcatalogservice-******-**** condition met
+pod/my-otel-demo-prometheus-server-******-**** condition met
+pod/my-otel-demo-quoteservice-******-**** condition met
+pod/my-otel-demo-recommendationservice-******-**** condition met
+pod/my-otel-demo-shippingservice-******-**** condition met
+pod/my-otel-demo-valkey-******-**** condition met
 </code></pre></div>
 <div class="grid cards">
 <ul>

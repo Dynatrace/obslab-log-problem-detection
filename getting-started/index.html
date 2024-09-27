@@ -327,6 +327,66 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#dynatrace-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynatrace Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Runbook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-new-problems-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install New Problems App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-openpipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create OpenPipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create OpenPipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-new-log-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Define New Log Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-pipeline-routing-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Pipeline Routing Rule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
     <span class="md-ellipsis">
       Create API Token
@@ -434,11 +494,31 @@
   
   
     <li class="md-nav__item">
+      <a href="../build-openpipeline-alert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Build OpenPipeline Alert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../introduce-change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. Introduce System Change
+    7. Introduce System Change
   </span>
   
 
@@ -458,7 +538,7 @@
         
   
   <span class="md-ellipsis">
-    7. Review Problem
+    8. Review Problem
   </span>
   
 
@@ -478,7 +558,7 @@
         
   
   <span class="md-ellipsis">
-    8. Cleanup
+    9. Cleanup
   </span>
   
 
@@ -498,7 +578,7 @@
         
   
   <span class="md-ellipsis">
-    9. Resources
+    10. Resources
   </span>
   
 
@@ -518,7 +598,7 @@
         
   
   <span class="md-ellipsis">
-    10. What's Next?
+    11. What's Next?
   </span>
   
 
@@ -552,6 +632,66 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dynatrace-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dynatrace Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-runbook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Runbook
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-new-problems-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install New Problems App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-openpipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create OpenPipeline
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create OpenPipeline">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#define-new-log-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Define New Log Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-pipeline-routing-rule" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Pipeline Routing Rule
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#create-api-token" class="md-nav__link">
@@ -605,15 +745,127 @@
 
 
 <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h1>
-<p>You must have the following to use this hands on demo.</p>
+<h2 id="dynatrace-environment">Dynatrace Environment<a class="headerlink" href="#dynatrace-environment" title="Permanent link">#</a></h2>
+<p>You must have access to a Dynatrace SaaS environment.<a href="https://dt-url.net/trial" target="_blank">Sign up here</a></p>
+<p>Save the Dynatrace environment URL:</p>
 <ul>
-<li>A Dynatrace environment (<a href="https://dt-url.net/trial" target="_blank">sign up here</a>)</li>
-<li>A Dynatrace API token (see below)</li>
+<li>Without the trailing slash</li>
+<li>Without <code>.apps.</code> in the URL</li>
 </ul>
-<p>Save the Dynatrace environment URL <strong>without</strong> the trailing slash and without the <code>.apps.</code> in the URL:</p>
-<div class="highlight"><pre><span></span><code>https://abc12345.live.dynatrace.com
+<p>The generic format is:</p>
+<div class="highlight"><pre><span></span><code>https://&lt;EnvironmentID&gt;.&lt;Environment&gt;.&lt;URL&gt;
 </code></pre></div>
-<h3 id="create-api-token">Create API Token<a class="headerlink" href="#create-api-token" title="Permanent link">#</a></h3>
+<p>For example:
+<div class="highlight"><pre><span></span><code>https://abc12345.live.dynatrace.com
+</code></pre></div></p>
+<h2 id="custom-runbook">Custom Runbook<a class="headerlink" href="#custom-runbook" title="Permanent link">#</a></h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>As the developer responsible for the cartservice, if problems occur, you're the best person to know how to resolve the issue.</p>
+<p>To help your colleagues, you have prebuilt a notebook which will be useful as a runbook if / when problems occur.</p>
+<p>You want to make this notebook automatically available whenever problems with the <code>cartservice</code> occur.</p>
+</div>
+<p>Download the file <a href="">Redis Troubleshooting.json</a> and save to your computer.</p>
+<p>In Dynatrace:</p>
+<ul>
+<li>Press <code>ctrl + k</code>. Search for <code>notebooks</code></li>
+<li>Open the app and find the <code>Upload</code> button at the top of the page</li>
+<li>Upload the JSON file you previously downloaded</li>
+</ul>
+<p><img alt="upload button" src="../images/notebook-upload-button.png" /></p>
+<ul>
+<li>Make a note of the notebook ID from the URL bar</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your environment and notebook IDs will be different.</p>
+</div>
+<p><img alt="notebook ID" src="../images/notebook-id.png" /></p>
+<h2 id="install-new-problems-app">Install New Problems App<a class="headerlink" href="#install-new-problems-app" title="Permanent link">#</a></h2>
+<p>In Dynatrace:</p>
+<ul>
+<li>Press <code>ctrl + k</code>. Search for <code>Hub</code>.</li>
+<li>Open the <code>Problems</code> app and click <code>Install</code></li>
+</ul>
+<p><img alt="problems app on hub" src="../images/problems-app-on-hub.png" /></p>
+<p><img alt="problems app install" src="../images/problems-app-install.png" /></p>
+<h2 id="create-openpipeline">Create OpenPipeline<a class="headerlink" href="#create-openpipeline" title="Permanent link">#</a></h2>
+<h3 id="define-new-log-pipeline">Define New Log Pipeline<a class="headerlink" href="#define-new-log-pipeline" title="Permanent link">#</a></h3>
+<p>In Dynatrace:</p>
+<ul>
+<li>Press <code>ctrl + k</code>. Search for <code>OpenPipeline</code>. Open the app</li>
+<li>Ensure <code>Logs</code> is selected and select the <code>Pipelines</code> tab</li>
+</ul>
+<p><img alt="logs pipeline" src="../images/pipeline-1.png" /></p>
+<ul>
+<li>Click <code>+ Pipeline</code> to create a new log ingest pipeline.</li>
+<li>Click the pencil icon and rename the pipeline to <code>Redis Pipeline</code></li>
+<li>Change to the <code>Data extraction</code> tab and add a new <code>Davis event</code> processor</li>
+</ul>
+<p><img alt="logs pipeline" src="../images/pipeline-2.png" />
+<img alt="davis event pipeline" src="../images/pipeline-davis-event.png" /></p>
+<ul>
+<li>Provide any name you like</li>
+<li>Set the <code>Matching condition</code> to <code>alertme == "true"</code></li>
+<li>Set the <code>Event name</code> to:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>[{dt.owner}] Redis connection failed
+</code></pre></div>
+<ul>
+<li>Set the <code>Event description</code> to:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>{supportInfo}
+</code></pre></div>
+<ul>
+<li>Set the <code>event.type</code> property to:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>ERROR_EVENT
+</code></pre></div>
+<ul>
+<li>
+<p>Add 3 new properties:</p>
+<ul>
+<li><code>dt.owner</code> with value: <code>{dt.owner}</code></li>
+<li><code>dt.cost.costcenter</code> with value: <code>{dt.cost.costcenter}</code></li>
+<li><code>dt.cost.product</code> with value: <code>{dt.cost.product}</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Save it!</p>
+<p>Don't forget to click <code>Save</code> to save the pipeline</p>
+</div>
+<p><img alt="finished pipeline definition" src="../images/finished-pipeline-definition.png" /></p>
+<p><img alt="pipelines" src="../images/pipeline-3.png" /></p>
+<h3 id="create-pipeline-routing-rule">Create Pipeline Routing Rule<a class="headerlink" href="#create-pipeline-routing-rule" title="Permanent link">#</a></h3>
+<p>Create a dynamic routing rule to tell Dynatrace to redirect only certain logs through the Redis pipeline.</p>
+<ul>
+<li>Switch to the <code>Dynamic routing</code> tab</li>
+<li>Click <code>+ Dynamic route</code></li>
+<li>Name the route whatever you like</li>
+<li>Set the <code>Matching condition</code> to:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>service.name == &quot;cartservice&quot; and
+dt.owner == &quot;teamA&quot;
+</code></pre></div>
+<ul>
+<li>Click <code>Add</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Save it!</p>
+<p>Don't forget to click <code>Save</code> to save the dynamic route</p>
+</div>
+<p><img alt="dynamic route" src="../images/pipeline-dynamic-route.png" />
+<img alt="dynamic route save button" src="../images/pipeline-dynamic-route-save-button.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<p>The pipeline is configured.</p>
+<p>Logs flowing into dynatrace from the <code>cartservice</code> and owned by <code>teamA</code> will be processed
+via your custom pipeline.</p>
+<p>If any of those individual log lines contain a K/V pair of <code>alertme: true</code>
+a problem will be raised in Dynatrace.</p>
+</div>
+<h2 id="create-api-token">Create API Token<a class="headerlink" href="#create-api-token" title="Permanent link">#</a></h2>
 <p>In Dynatrace:</p>
 <ul>
 <li>Press <code>ctrl + k</code>. Search for <code>access tokens</code>.</li>
@@ -627,12 +879,19 @@
 </ul>
 <h4 id="api-token-permissions-explained">API Token Permissions Explained<a class="headerlink" href="#api-token-permissions-explained" title="Permanent link">#</a></h4>
 <ul>
-<li><code>logs.ingest</code> is required to send log entries into Dynatrace</li>
+<li><code>logs.ingest</code>, <code>metrics.ingest</code> and <code>openTelemetryTrace.ingest</code> are required to send the relevant telemetry data into Dynatrace</li>
 <li><code>events.ingest</code> is required to send the <code>CUSTOM_CONFIGURATION</code> event into Dynatrace</li>
 </ul>
 <h2 id="start-demo">Start Demo<a class="headerlink" href="#start-demo" title="Permanent link">#</a></h2>
+<p>You've done the hard work! It is time to spin up the demo environment.</p>
 <p>Click this button to open the demo environment. This will open in a new tab.</p>
 <p><a href="https://codespaces.new/dynatrace/obslab-log-problem-detection" target="_blank"><img alt="Open in GitHub Codespaces" src="https://github.com/codespaces/badge.svg" /></a></p>
+<ul>
+<li>Fill in the form with the details you've already gathered.</li>
+<li>Click <code>Create codespace</code></li>
+<li>Proceed to the next documentation step with the link below.</li>
+</ul>
+<p><img alt="codespace form" src="../images/codespace-form.png" /></p>
 <div class="grid cards">
 <ul>
 <li><a href="../installation-explained/">Click Here to Continue <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span></a></li>

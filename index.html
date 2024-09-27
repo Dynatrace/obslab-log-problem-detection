@@ -426,11 +426,31 @@
   
   
     <li class="md-nav__item">
+      <a href="build-openpipeline-alert/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6. Build OpenPipeline Alert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="introduce-change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    6. Introduce System Change
+    7. Introduce System Change
   </span>
   
 
@@ -450,7 +470,7 @@
         
   
   <span class="md-ellipsis">
-    7. Review Problem
+    8. Review Problem
   </span>
   
 
@@ -470,7 +490,7 @@
         
   
   <span class="md-ellipsis">
-    8. Cleanup
+    9. Cleanup
   </span>
   
 
@@ -490,7 +510,7 @@
         
   
   <span class="md-ellipsis">
-    9. Resources
+    10. Resources
   </span>
   
 
@@ -510,7 +530,7 @@
         
   
   <span class="md-ellipsis">
-    10. What's Next?
+    11. What's Next?
   </span>
   
 
@@ -594,6 +614,12 @@
 <p>In this hands-on demo, you will send logs from the OpenTelemetry demo application to Dynatrace.</p>
 <p>You will induce a problem which <a href="https://www.dynatrace.com/platform/artificial-intelligence/" target="_blank">Dynatrace DAVIS</a> will detect and thus raise a problem report based on the Observability data.</p>
 <p>The logs include span and trace IDs meaning you will be easily able to drill between signal types to see logs in the context of the distributed trace and vice versa.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Right click and "open image in new tab"
+to see large image</p>
+</div>
+<p><img alt="problem details" src="images/problem-details.png" /></p>
 <h2 id="how-is-the-problem-created">How is the problem created?<a class="headerlink" href="#how-is-the-problem-created" title="Permanent link">#</a></h2>
 <p>You will release a new feature into production. For demo purposes, this new feature intentionally introduces failure into the system.</p>
 <p>First you will inform Dynatrace that a change is incoming. This will be done by sending a <code>CUSTOM_CONFIGURATION</code> event to Dynatrace.
@@ -613,7 +639,7 @@ Then the feature will be enabled by toggling a feature flag.</p>
 <tbody>
 <tr>
 <td>Dynatrace Managed</td>
-<td>✔️</td>
+<td>❌</td>
 </tr>
 <tr>
 <td>Dynatrace SaaS</td>
