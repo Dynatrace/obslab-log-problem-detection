@@ -3,6 +3,9 @@
 
 After a few moments, DAVIS will detect the issue and create a problem.
 
+!!! question
+    Let's see what Dynatrace can tell us about this issue...
+
 Press `ctrl + k` and search for `Problems` this will open the problems screen.
 
 You should see a problem titled: `Redis connection errors`
@@ -19,14 +22,20 @@ Navigate to the `Logs` panel. Click `Run query` next to `Show x errors` (your nu
 
 ![logs panel 1](images/logs-panel-1.png)
 
+## Logs Contain Key Metadata
+
 Expand the log entry and notice you have some key metadata available:
 
 * Timestamp of this log line
 * `host.name` (which equates to the container name)
 * `loglevel` ie. `ERROR`
 * OpenTelemetry `span_id` and `trace_id`
+* Ownership information: `dt.owner`
+* Cost information: `dt.cost.product` and `dt.cost.costcenter`
 
 ![log entry 1](images/log-entry-1.png)
+
+## What Happened Leading to this Error?
 
 Now click `Show surrounding logs` this shows `ALL` log lines with the same `trace_id`.
 
@@ -70,23 +79,39 @@ Finally the `EmptyCart` method is called, which fails.
 
 ![opentelemetry trace](images/trace-1.png)
 
-## Reveal the root cause
+## Runbook! Where's the runbook!?
+
+Recall that the developer provided us with a handy runbook.
+
+Navigate back to the problem and notice the problem description contains a link to the Ops runbook.
+
+![problem markdown](images/problem-markdown.png)
+
+Follow the link to the runbook.
+
+### Immediate Action
+
+The first section of the runbook provides clear instructions on what to do and who to contact.
+
+### Chart 1: Error Trend
+
+!!! tip "Re-run sections"
+    You may need to re-run the sections to refresh the data.
+    Just click each chart and click the `Run` button
+
+The first chart shows a increased failure rate for the `cartservice`.
+
+OK, we're on to something...
 
 DAVIS told us (and our investigation confirmed) that the problem originated in the `cartservice`.
 
-We know that the problem was caused by a failure to connect to Redis. We can guess that it was due to the feature flag change we made.
+We know that the problem was caused by a failure to connect to Redis. But what caused that error? Did something change?
 
-However, beyond a demo scenario, in a realistic, complex system, there are many moving parts. Let's see what Dynatrace can tell us about
-what was happening with (and to) the `cartservice` around the time of the failure.
+### Chart 2: Change Caused the Failure
 
-Navigate back to the `cartservice` screen. You can do so either by:
+Chart two shows both configuration events and problems on the same chart.
 
-* Selecting a span in the trace which is attributed to cartservice. Then click the blue hyperlink to take you to the `cartservice` page
-* Press `ctrl + k` search for `Services` and navigate to the `cartservice` entity
-
-Scroll to the bottom of the `cartservice` page until you see the `Events` table.
-
-Notice the `configuration change` event which immediately preceeds the `App cannot connect to redis` event.
+![configuration changes and problems](images/problems-and-change-chart.png)
 
 !!! tip "Change is the cause of most failures"
     Something changed on the `cartservice` immediately prior

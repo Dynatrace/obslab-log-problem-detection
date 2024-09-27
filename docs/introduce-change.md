@@ -24,7 +24,7 @@ Refresh the `my-otel-demo-cartservice` page and near the bottom you should see t
 
 Open this file: `flags.yaml`
 
-Change the `defaultValue` of `cartServiceFailure` from `"off"` to `"on"` (line Scroll to line `75`)
+Change the `defaultValue` of `cartServiceFailure` from `"off"` to `"on"` (scroll to line `75`)
 
 ![feature flag YAML](images/change-feature-flag.png)
 
@@ -40,8 +40,9 @@ You should see:
 configmap/my-otel-demo-flagd-config configured
 ```
 
-The application will now generate errors when emptying the users cart.
-It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.
+!!! warning "Be Patient"
+    The application will now generate errors when emptying the users cart.
+    It will do this 1/10th of the time, so be patient, it can take a few moments for the errors to occur.
 
 ## Generate Your Own Traffic
 
@@ -50,6 +51,21 @@ There is a load generator running, but you can generate traffic by accessing the
 See [access user interface](access-ui.md){target=_blank}
 
 Repeatedly add an item to your cart, go to the cart and empty it. Hope you're "lucky" that you generate a backend failure.
+
+## Open Problems App
+
+In Dynatrace:
+
+* Press `ctrl + k`. Search for `problems`
+* Open the problems app
+
+Wait for the problem to appear.
+
+You can also open the `my-otel-demo-cartservice` Service screen to monitor for failures.
+
+* Press `ctrl + k`. Search for `Services`
+* Open the services app + navigate to the `my-otel-demo-cartservice`
+* Monitor the `Failed requests` chart
 
 <div class="grid cards" markdown>
 - [Click Here to Continue :octicons-arrow-right-24:](review-problem.md)
