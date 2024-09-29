@@ -66,7 +66,7 @@ config:
           - tag_name: supportInfo
             key: supportInfo
             from: pod
-          - tag: deployment.releasae_product
+          - tag: deployment.release_product
             key: product
             from: pod
           - tag: deployment.release_stage
@@ -122,6 +122,7 @@ config:
             #   and IsMatch(body, "(?i)getcartasync.*")
             - set(attributes["alertme"], "true")
               where resource.attributes["service.name"] == "cartservice"
+              and resource.attributes["environment"] == "production"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
   exporters:
     debug:
@@ -131,9 +132,6 @@ config:
       headers:
         Authorization: "Api-Token ${env:DT_API_TOKEN}"
   service:
-    telemetry:
-      logs:
-        level: debug
     pipelines:
       metrics:
         receivers: [otlp]
