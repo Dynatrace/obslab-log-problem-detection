@@ -121,8 +121,10 @@ config:
             #   where resource.attributes["service.name"] == "cartservice"
             #   and IsMatch(body, "(?i)getcartasync.*")
             - set(attributes["alertmessage"], "Critical Redis connection error!")
-              and
-              set(attributes["priority"], "1")
+              where resource.attributes["service.name"] == "cartservice"
+              and resource.attributes["environment"] == "production"
+              and IsMatch(body, "(?i)wasn't able to connect to redis.*")
+            - set(attributes["priority"], "1")
               where resource.attributes["service.name"] == "cartservice"
               and resource.attributes["environment"] == "production"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
