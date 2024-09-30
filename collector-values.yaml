@@ -120,14 +120,15 @@ config:
             # - set(attributes["alertme"], "true")
             #   where resource.attributes["service.name"] == "cartservice"
             #   and IsMatch(body, "(?i)getcartasync.*")
-            - set(attributes["alertmessage"], "Critical Redis connection error!")
+            - set(attributes["alertmessage"], "Critical Redis connection error!") and
+              set(attributes["priority"], "1")
               where resource.attributes["service.name"] == "cartservice"
               and resource.attributes["deployment.release_stage"] == "production"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
-            - set(attributes["priority"], "1")
-              where resource.attributes["service.name"] == "cartservice"
-              and resource.attributes["deployment.release_stage"] == "production"
-              and IsMatch(body, "(?i)wasn't able to connect to redis.*")
+            # - set(attributes["priority"], "1")
+            #   where resource.attributes["service.name"] == "cartservice"
+            #   and resource.attributes["deployment.release_stage"] == "production"
+            #   and IsMatch(body, "(?i)wasn't able to connect to redis.*")
   exporters:
     debug:
       verbosity: detailed
