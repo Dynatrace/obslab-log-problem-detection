@@ -35,6 +35,8 @@ theme:
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
+  features:
+    - content.code.copy
 markdown_extensions:
   - attr_list
   - toc:
