@@ -69,24 +69,24 @@ In Dynatrace:
 ![logs pipeline](images/pipeline-1.png)
 
 * Click `+ Pipeline` to create a new log ingest pipeline.
-* Click the pencil icon and rename the pipeline to `Redis Pipeline`
+* Click the pencil icon and rename the pipeline to `Log Errors`
 * Change to the `Data extraction` tab and add a new `Davis event` processor
 
 ![logs pipeline](images/pipeline-2.png)
 ![davis event pipeline](images/pipeline-davis-event.png)
 
 * Provide any name you like
-* Set the `Matching condition` to `alertme == "true"`
+* Set the `Matching condition` to `true` (this means any log line flowing through the pipeline will alert)
 * Set the `Event name` to:
 
 ```
-[{dt.owner}] Redis connection failed
+[{priority}][{deployment.release_stage}][{deployment.release_product}][{dt.owner}] {alertmessage}
 ```
 
 * Set the `Event description` to:
 
 ```
-{supportInfo}
+{supportInfo} - Log line: {content}
 ```
 
 * Set the `event.type` property to:
@@ -95,11 +95,13 @@ In Dynatrace:
 ERROR_EVENT
 ```
 
-* Add 3 new properties:
+* Add 5 new properties:
 
     * `dt.owner` with value: `{dt.owner}`
     * `dt.cost.costcenter` with value: `{dt.cost.costcenter}`
     * `dt.cost.product` with value: `{dt.cost.product}`
+    * `deployment.release_product` with value: `{deployment.release_product}`
+    * `deployment.release_stage` with value: `{deployment.release_stage}`
 
 !!! warning "Save it!"
     Don't forget to click `Save` to save the pipeline
@@ -110,7 +112,7 @@ ERROR_EVENT
 
 ### Create Pipeline Routing Rule
 
-Create a dynamic routing rule to tell Dynatrace to redirect only certain logs through the Redis pipeline.
+Create a dynamic routing rule to tell Dynatrace to redirect only certain logs through the Logs Errors pipeline.
 
 * Switch to the `Dynamic routing` tab
 * Click `+ Dynamic route`
@@ -118,8 +120,9 @@ Create a dynamic routing rule to tell Dynatrace to redirect only certain logs th
 * Set the `Matching condition` to:
 
 ```
-service.name == "cartservice" and
-dt.owner == "teamA"
+isNotNull(alertmessage) and
+isNotNull(priority) and
+priority == "1"
 ```
 
 * Click `Add`
@@ -133,11 +136,19 @@ dt.owner == "teamA"
 !!! success
     The pipeline is configured.
 
-    Logs flowing into dynatrace from the `cartservice` and owned by `teamA` will be processed
+    Logs flowing into Dynatrace with an `alertmessage` field and a priority of `"1"` will be processed
     via your custom pipeline.
 
-    If any of those individual log lines contain a K/V pair of `alertme: true`
-    a problem will be raised in Dynatrace.
+    Those log lines will raise a custom problem in Dynatrace
+    where the problem title is:
+
+    `[{priority}][{deployment.release_stage}][{deployment.release_product}][{dt.owner}] {alertmessage}`
+
+### Explain the Configuration
+
+The above needs some explanation because there's a lot of "magic" happening.
+
+This will be explained after the demo is started; while you wait for things to initialise.
 
 ## Create API Token
 
@@ -167,8 +178,6 @@ Click this button to open the demo environment. This will open in a new tab.
 * Proceed to the next documentation step with the link below.
 
 ![codespace form](images/codespace-form.png)
-
-
 
 
 <div class="grid cards" markdown>
