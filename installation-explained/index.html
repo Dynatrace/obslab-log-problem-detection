@@ -352,6 +352,57 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#explain-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explain the Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explain the Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pod-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pod Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-collector-enriches-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Collector Enriches Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8sattributes-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      k8sattributes Processor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      transform Processor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#wait-for-system" class="md-nav__link">
     <span class="md-ellipsis">
       Wait for System
@@ -424,31 +475,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../build-openpipeline-alert/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Build OpenPipeline Alert
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../introduce-change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7. Introduce System Change
+    6. Introduce System Change
   </span>
   
 
@@ -468,7 +499,7 @@
         
   
   <span class="md-ellipsis">
-    8. Review Problem
+    7. Review Problem
   </span>
   
 
@@ -488,7 +519,7 @@
         
   
   <span class="md-ellipsis">
-    9. Cleanup
+    8. Cleanup
   </span>
   
 
@@ -508,7 +539,7 @@
         
   
   <span class="md-ellipsis">
-    10. Resources
+    9. Resources
   </span>
   
 
@@ -528,7 +559,7 @@
         
   
   <span class="md-ellipsis">
-    11. What's Next?
+    10. What's Next?
   </span>
   
 
@@ -567,6 +598,57 @@
       Hurry up and wait
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#explain-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explain the Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Explain the Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-pod-annotations" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pod Annotations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-collector-enriches-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Collector Enriches Logs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k8sattributes-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      k8sattributes Processor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transform-processor" class="md-nav__link">
+    <span class="md-ellipsis">
+      transform Processor
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -612,13 +694,79 @@
 <div class="admonition warning">
 <p class="admonition-title">Grab a Coffee</p>
 <p>Everything is installing. This can take a while.</p>
+<p>While you wait, the section below will explain what you've just configured and how it works.</p>
 </div>
 <p>The OpenTelemetry demo and the Dynatrace collector will be installed automatically.</p>
-<p>The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables (hint: <code>printenv</code> to see).</p>
-<p>They will also be stored in a Kubernetes secret:</p>
-<div class="highlight"><pre><span></span><code>kubectl get secret/dynatrace-otelcol-dt-api-credentials -o yaml
+<p>The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables.</p>
+<p>They will also be stored in a Kubernetes secret <code>dynatrace-otelcol-dt-api-credentials</code></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Type <code>printenv</code> to see all environment variables
+set by GitHub.</p>
+</div>
+<h2 id="explain-the-configuration">Explain the Configuration<a class="headerlink" href="#explain-the-configuration" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">OpenTelemetry Experts Need Not Apply</p>
+<p>If you already understand OpenTelemetry, the collector, OTTL
+and are comfortable reading the collector configuration file,
+you can probably skip this section.</p>
+</div>
+<p>The pipeline setup in the previous section contained references to lots of fields such as <code>priority</code>, <code>alertmessage</code> and <code>dt.owner</code>.</p>
+<p>How did all of those fields get there? Remember, this demo does not modify any of the application code.</p>
+<h3 id="1-pod-annotations">1. Pod Annotations<a class="headerlink" href="#1-pod-annotations" title="Permanent link">#</a></h3>
+<p>First, the developer adds additional, custom annotations to the microservice they are interested in. In this case, the <code>cartservice</code>.</p>
+<p>They do this by adding some Key/Value pairs to the <code>podAnnotations</code> (see <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/6314352aaeefc489d8d0096b787a981c81831f59/otel-demo-values.yaml#L20" target="_blank">otel-demo-values.yaml</a>).</p>
+<p>During initialisation, the codespace replaces the placeholder text with your tenant details and notebook ID (see <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/6314352aaeefc489d8d0096b787a981c81831f59/.devcontainer/post-create.sh#L38" target="_blank">post-create.sh</a>).</p>
+<p>It is important to realise that the developer is in full control of these K/V pairs.
+They can add as many or few as they wish.</p>
+<p>You can see these annotations with this command:</p>
+<div class="highlight"><pre><span></span><code>kubectl describe pod -l app.kubernetes.io/component=cartservice
 </code></pre></div>
+<p><img alt="podAnnotations" src="../images/podAnnotations.png" /></p>
+<h3 id="2-collector-enriches-logs">2. Collector Enriches Logs<a class="headerlink" href="#2-collector-enriches-logs" title="Permanent link">#</a></h3>
+<p>Logs are <a href="https://opentelemetry.io/docs/demo/services/cart/#logs" target="_blank">sent out of the cartservice via OpenTelemetry Protocol (OTLP)</a> to the collector.</p>
+<p>As log lines flow <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/main/collector-values.yaml#L148" target="_blank">through the collector pipeline</a>,
+the logs are processed by two <code>processors</code>: The <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor" target="_blank">k8sattributes</a> and <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor" target="_blank">transform</a> processors.</p>
+<h3 id="k8sattributes-processor">k8sattributes Processor<a class="headerlink" href="#k8sattributes-processor" title="Permanent link">#</a></h3>
+<p>The <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor" target="_blank">k8sattributes</a> interacts with the Kubernetes API to extract important k8s metadata such as pod names, deployment names, node names and other topology-relevant information.</p>
+<p>This processor also <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/6314352aaeefc489d8d0096b787a981c81831f59/collector-values.yaml#L49" target="_blank">pulls selected annotations from pods</a>. Namely, the custom annotations that were set in step one.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Notice also that the <code>key</code>s are renamed in realtime to Dynatrace-relevant keys. (eg. <code>ownedBy</code> becomes <code>dt.owner</code>).</p>
+</div>
+<p>All of this information: the k8s metadata and custom annotations are dynamically added to each log line and span as it flows through the collector.</p>
+<p>Thus this log line:</p>
+<div class="highlight"><pre><span></span><code>2024-10-01 10:00:00 INFO A log message
+</code></pre></div>
+<p>May become:</p>
+<div class="highlight"><pre><span></span><code>2024-10-01 10:00:00 INFO A log message dt.owner=Susan k8s.pod-name=cart-service-abc1234 ...
+</code></pre></div>
+<h3 id="transform-processor">transform Processor<a class="headerlink" href="#transform-processor" title="Permanent link">#</a></h3>
+<p>The <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor" target="_blank">transform</a> processor modifies the telemetry (eg. log line content and attributes) based on the <a href="https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl" target="_blank">OpenTelemetry Transformation Language</a>.</p>
+<p>The collector creates new dynatrace-relevant attributes based on existing attributes. <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/6314352aaeefc489d8d0096b787a981c81831f59/collector-values.yaml#L106" target="_blank">For example</a>, taking <code>k8s.deployment.name</code> and creating a new attribute called <code>dt.kubernetes.workload.name</code> with the same value.</p>
+<p>Two brand new attributes <code>alertmessage</code> and <code>priority</code> are dynamically added (see <a href="https://github.com/Dynatrace/obslab-log-problem-detection/blob/6314352aaeefc489d8d0096b787a981c81831f59/collector-values.yaml#L123" target="_blank">here</a>) based on conditions we specify.</p>
+<ul>
+<li><code>alertmessage</code> is intended as a place for the developer to indicate a human readable alert message.</li>
+<li><code>priority</code> is intended as a place for the developer to indicate the importance of this error.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>- set(attributes[&quot;alertmessage&quot;], &quot;Critical Redis connection error!&quot;)
+  where resource.attributes[&quot;service.name&quot;] == &quot;cartservice&quot;
+  and resource.attributes[&quot;deployment.release_stage&quot;] == &quot;production&quot;
+  and IsMatch(body, &quot;(?i)wasn&#39;t able to connect to redis.*&quot;)
+
+- set(attributes[&quot;priority&quot;], &quot;1&quot;)
+  where resource.attributes[&quot;service.name&quot;] == &quot;cartservice&quot;
+  and resource.attributes[&quot;deployment.release_stage&quot;] == &quot;production&quot;
+  and IsMatch(body, &quot;(?i)wasn&#39;t able to connect to redis.*&quot;)
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">OpenPipeline Integration</p>
+<p>The previous steps demonstrate how the logs are enriched with additional metadata.</p>
+<p>OpenPipeline can then use these fields as logs flow into Dynatrace.</p>
+</div>
 <h2 id="wait-for-system">Wait for System<a class="headerlink" href="#wait-for-system" title="Permanent link">#</a></h2>
+<p>The system may still be loading.</p>
+<p>Wait until the <code>Running postCreate command</code> loading spinner disappears.</p>
 <p><img alt="codespace loading" src="../images/codespace-loading.png" /></p>
 <p>Wait here until the terminal prompt looks like this (your username will differ).</p>
 <p><img alt="codespace interactive" src="../images/codespace-interactive.png" /></p>

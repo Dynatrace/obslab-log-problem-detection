@@ -381,6 +381,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#explain-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explain the Configuration
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -494,31 +503,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../build-openpipeline-alert/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    6. Build OpenPipeline Alert
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../introduce-change/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    7. Introduce System Change
+    6. Introduce System Change
   </span>
   
 
@@ -538,7 +527,7 @@
         
   
   <span class="md-ellipsis">
-    8. Review Problem
+    7. Review Problem
   </span>
   
 
@@ -558,7 +547,7 @@
         
   
   <span class="md-ellipsis">
-    9. Cleanup
+    8. Cleanup
   </span>
   
 
@@ -578,7 +567,7 @@
         
   
   <span class="md-ellipsis">
-    10. Resources
+    9. Resources
   </span>
   
 
@@ -598,7 +587,7 @@
         
   
   <span class="md-ellipsis">
-    11. What's Next?
+    10. What's Next?
   </span>
   
 
@@ -683,6 +672,15 @@
   <a href="#create-pipeline-routing-rule" class="md-nav__link">
     <span class="md-ellipsis">
       Create Pipeline Routing Rule
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explain-the-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explain the Configuration
     </span>
   </a>
   
@@ -799,22 +797,22 @@
 <p><img alt="logs pipeline" src="../images/pipeline-1.png" /></p>
 <ul>
 <li>Click <code>+ Pipeline</code> to create a new log ingest pipeline.</li>
-<li>Click the pencil icon and rename the pipeline to <code>Redis Pipeline</code></li>
+<li>Click the pencil icon and rename the pipeline to <code>Log Errors</code></li>
 <li>Change to the <code>Data extraction</code> tab and add a new <code>Davis event</code> processor</li>
 </ul>
 <p><img alt="logs pipeline" src="../images/pipeline-2.png" />
 <img alt="davis event pipeline" src="../images/pipeline-davis-event.png" /></p>
 <ul>
 <li>Provide any name you like</li>
-<li>Set the <code>Matching condition</code> to <code>alertme == "true"</code></li>
+<li>Set the <code>Matching condition</code> to <code>true</code> (this means any log line flowing through the pipeline will alert)</li>
 <li>Set the <code>Event name</code> to:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>[{dt.owner}] Redis connection failed
+<div class="highlight"><pre><span></span><code>[{priority}][{deployment.release_stage}][{deployment.release_product}][{dt.owner}] {alertmessage}
 </code></pre></div>
 <ul>
 <li>Set the <code>Event description</code> to:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>{supportInfo}
+<div class="highlight"><pre><span></span><code>{supportInfo} - Log line: {content}
 </code></pre></div>
 <ul>
 <li>Set the <code>event.type</code> property to:</li>
@@ -823,11 +821,13 @@
 </code></pre></div>
 <ul>
 <li>
-<p>Add 3 new properties:</p>
+<p>Add 5 new properties:</p>
 <ul>
 <li><code>dt.owner</code> with value: <code>{dt.owner}</code></li>
 <li><code>dt.cost.costcenter</code> with value: <code>{dt.cost.costcenter}</code></li>
 <li><code>dt.cost.product</code> with value: <code>{dt.cost.product}</code></li>
+<li><code>deployment.release_product</code> with value: <code>{deployment.release_product}</code></li>
+<li><code>deployment.release_stage</code> with value: <code>{deployment.release_stage}</code></li>
 </ul>
 </li>
 </ul>
@@ -838,15 +838,16 @@
 <p><img alt="finished pipeline definition" src="../images/finished-pipeline-definition.png" /></p>
 <p><img alt="pipelines" src="../images/pipeline-3.png" /></p>
 <h3 id="create-pipeline-routing-rule">Create Pipeline Routing Rule<a class="headerlink" href="#create-pipeline-routing-rule" title="Permanent link">#</a></h3>
-<p>Create a dynamic routing rule to tell Dynatrace to redirect only certain logs through the Redis pipeline.</p>
+<p>Create a dynamic routing rule to tell Dynatrace to redirect only certain logs through the Logs Errors pipeline.</p>
 <ul>
 <li>Switch to the <code>Dynamic routing</code> tab</li>
 <li>Click <code>+ Dynamic route</code></li>
 <li>Name the route whatever you like</li>
 <li>Set the <code>Matching condition</code> to:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>service.name == &quot;cartservice&quot; and
-dt.owner == &quot;teamA&quot;
+<div class="highlight"><pre><span></span><code>isNotNull(alertmessage) and
+isNotNull(priority) and
+priority == &quot;1&quot;
 </code></pre></div>
 <ul>
 <li>Click <code>Add</code></li>
@@ -860,11 +861,15 @@ dt.owner == &quot;teamA&quot;
 <div class="admonition success">
 <p class="admonition-title">Success</p>
 <p>The pipeline is configured.</p>
-<p>Logs flowing into dynatrace from the <code>cartservice</code> and owned by <code>teamA</code> will be processed
+<p>Logs flowing into Dynatrace with an <code>alertmessage</code> field and a priority of <code>"1"</code> will be processed
 via your custom pipeline.</p>
-<p>If any of those individual log lines contain a K/V pair of <code>alertme: true</code>
-a problem will be raised in Dynatrace.</p>
+<p>Those log lines will raise a custom problem in Dynatrace
+where the problem title is:</p>
+<p><code>[{priority}][{deployment.release_stage}][{deployment.release_product}][{dt.owner}] {alertmessage}</code></p>
 </div>
+<h3 id="explain-the-configuration">Explain the Configuration<a class="headerlink" href="#explain-the-configuration" title="Permanent link">#</a></h3>
+<p>The above needs some explanation because there's a lot of "magic" happening.</p>
+<p>This will be explained after the demo is started; while you wait for things to initialise.</p>
 <h2 id="create-api-token">Create API Token<a class="headerlink" href="#create-api-token" title="Permanent link">#</a></h2>
 <p>In Dynatrace:</p>
 <ul>
