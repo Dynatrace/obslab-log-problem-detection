@@ -60,10 +60,12 @@ helm upgrade -i my-otel-demo open-telemetry/opentelemetry-demo -f otel-demo-valu
 
 #############################################################################
 # Creation Ping
-# curl -X POST https://grzxx1q7wd.execute-api.us-east-1.amazonaws.com/default/codespace-tracker \
-#   -H "Content-Type: application/json" \
-#   -d "{
-#     \"repo\": \"$GITHUB_REPOSITORY\",
-#     \"demo\": \"obslab-log-problem-detection\",
-#     \"codespace.name\": \"$CODESPACE_NAME\"
-#   }"
+curl -X POST https://grzxx1q7wd.execute-api.us-east-1.amazonaws.com/default/codespace-tracker \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"tenant\": \"$DT_ENV_ID_OBSLAB_LOG_PROBLEM_DETECTION\",
+    \"dt_environment\": \"$DT_ENV_OBSLAB_LOG_PROBLEM_DETECTION\",
+    \"repo\": \"$GITHUB_REPOSITORY\",
+    \"demo\": \"obslab-log-problem-detection\",
+    \"codespace.name\": \"$CODESPACE_NAME\"
+  }"
