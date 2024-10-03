@@ -1,4 +1,4 @@
-# obslab-log-problem-detection
+# Observability Lab: Using Dynatrace to Detect Problems in Logs
 
 ![problem details](docs/images/problem-details.png)
 
