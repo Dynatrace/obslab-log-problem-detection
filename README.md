@@ -8,4 +8,4 @@ You will artificially create a problem in the application which Dynatrace DAVIS 
 
 The logs include span and trace IDs meaning you will be easily able to drill between signal types to see logs in the context of the distributed trace and vice versa.
 
-## [Start the tutorial here >>](https://dynatrace.github.io/obslab-log-problem-detection)
+## [Start the hands-on here >>](https://dynatrace.github.io/obslab-log-problem-detection)
