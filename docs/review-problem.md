@@ -89,6 +89,8 @@ Navigate back to the problem and notice the problem description contains a link 
 
 Follow the link to the runbook.
 
+![runbook screenshot](images/notebook.png)
+
 ### Immediate Action
 
 The first section of the runbook provides clear instructions on what to do and who to contact.
