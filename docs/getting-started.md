@@ -29,7 +29,7 @@ https://abc12345.live.dynatrace.com
 
     You want to make this notebook automatically available whenever problems with the `cartservice` occur.
 
-Download the file [Redis Troubleshooting.json]() and save to your computer.
+Download the file [Redis Troubleshooting.json](https://github.com/Dynatrace/obslab-log-problem-detection/blob/main/dynatrace/Redis%20Troubleshooting.json) and save to your computer.
 
 In Dynatrace:
 
