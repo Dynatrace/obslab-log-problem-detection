@@ -1,5 +1,7 @@
 # Using Dynatrace to Detect Problems in Logs
 
+--8<-- "snippets/disclaimer.md"
+
 In this hands-on demo, you will send logs from the OpenTelemetry demo application to Dynatrace.
 
 You will artificially create a problem in the application which [Dynatrace DAVIS](https://www.dynatrace.com/platform/artificial-intelligence/){target=_blank} will detect and thus raise a problem report based on the Observability data.
