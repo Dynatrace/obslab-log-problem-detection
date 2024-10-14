@@ -1,5 +1,6 @@
 # Observability Lab: Using Dynatrace to Detect Problems in Logs
 
+<!--
 > ⚠️ Support Level ⚠️
 > 
 > This repository contains demo projects created by the Developer Relations team at Dynatrace, showcasing integrations with open source technologies.
@@ -12,7 +13,7 @@
 >
 > **No Warranty**: The materials provided in this repository are offered "as-is" without any warranties, express or implied. Use them at your own risk.
 > For any questions or discussions, please engage with us on the [Dynatrace Community](https://community.dynatrace.com).
-
+-->
 
 ![problem details](docs/images/problem-details.png)
 
