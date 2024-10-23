@@ -14,6 +14,8 @@ nav:
   - "10. What's Next?": whats-next.md
 theme:
   name: material
+  features:
+    - content.code.copy
   palette:
 
   # Palette toggle for automatic mode
@@ -52,9 +54,4 @@ markdown_extensions:
       base_path: ["docs"]
 plugins:
     - search
-    - markdownextradata  
-extra:
-  dt:
-    rumagent:
-      snippet: <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/1b109d4de75a8985_complete.js" crossorigin="anonymous"></script>
-  obslab: obslab-log-problem-detection
+    - markdownextradata
