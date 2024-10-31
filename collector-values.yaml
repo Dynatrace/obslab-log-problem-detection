@@ -174,7 +174,7 @@ config:
     pipelines:
       metrics:
         receivers: [otlp]
-        processors: [cumulativetodelta]
+        processors: [k8sattributes, cumulativetodelta]
         exporters: [debug, otlphttp]
       traces:
         receivers: [otlp]
