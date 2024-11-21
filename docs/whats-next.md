@@ -1,1 +1,1 @@
-Content here about what the user should do, where they should and what they could learn next.
+Learn more about the [Dynatrace Logs App](https://docs.dynatrace.com/docs/analyze-explore-automate/logs/lma-analysis/logs-app){target=_blank}.
