@@ -6,6 +6,8 @@ grafana:
   enabled: false
 opensearch:
   enabled: false
+prometheus:
+  enabled: false
 
 default:
   env:
