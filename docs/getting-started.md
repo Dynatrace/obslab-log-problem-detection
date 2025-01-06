@@ -167,6 +167,8 @@ In Dynatrace:
 
 ## Start Demo
 
+--8<-- "snippets/codespace-details-warning-box.md"
+
 You've done the hard work! It is time to spin up the demo environment.
 
 Click this button to open the demo environment. This will open in a new tab.
