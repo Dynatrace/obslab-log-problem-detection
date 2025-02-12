@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/1b109d4de75a8985_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -492,6 +497,12 @@
 
 
   <h1>8. Cleanup</h1>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "8. cleanup"});
+});
+</script>
 
 <p>To cleanup resources, go to <a href="https://github.com/codespaces" target="_blank">https://github.com/codespaces</a> and delete the codespace.</p>
 <p>You may also want to deactivate or delete the API token.</p>

@@ -34,8 +34,13 @@
 
     
     
+  <!-- Add scripts that need to run before here -->
+  
       
     
+  <!-- Add scripts that need to run afterwards here -->
+  <script type="text/javascript" src="https://js-cdn.dynatrace.com/jstag/145e12d594f/bf64904yne/1b109d4de75a8985_complete.js" crossorigin="anonymous"></script>
+
     
       
         
@@ -743,6 +748,12 @@
 
 
 <h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h1>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "2. getting-started"});
+});
+</script>
+
 <h2 id="dynatrace-environment">Dynatrace Environment<a class="headerlink" href="#dynatrace-environment" title="Permanent link">#</a></h2>
 <p>You must have access to a Dynatrace SaaS environment.<a href="https://dt-url.net/trial" target="_blank">Sign up here</a></p>
 <p>Save the Dynatrace environment URL:</p>
