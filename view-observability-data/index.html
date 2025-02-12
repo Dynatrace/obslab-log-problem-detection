@@ -593,6 +593,12 @@
 
   <h1>5. Validate Observability Data</h1>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  dynatrace.sendBizEvent('page_load', {"page": "5. validate-observability-data"});
+});
+</script>
+
 <p>In Dynatrace, press <code>ctrl + k</code> and search for <code>Services</code>. Dynatrace creates service entities based on the incoming span data.
 The logs are also available for <a href="https://opentelemetry.io/docs/demo/telemetry-features/log-coverage/" target="_blank">some services</a></p>
 <p>In this demo, you will be focussing on the <code>Cart</code>  which does have logs and is written in <code>.NET</code>.</p>
