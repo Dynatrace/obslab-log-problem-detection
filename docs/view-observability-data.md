@@ -1,4 +1,4 @@
---8<-- "snippets/validate-observability-data.js"
+--8<-- "snippets/bizevent-validate-observability-data.js"
 
 In Dynatrace, press `ctrl + k` and search for `Services`. Dynatrace creates service entities based on the incoming span data.
 The logs are also available for [some services](https://opentelemetry.io/docs/demo/telemetry-features/log-coverage/){target=_blank}
