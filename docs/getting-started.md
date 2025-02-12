@@ -1,5 +1,7 @@
 # Getting Started
 
+--8<-- "snippets/bizevent-getting-started.js"
+
 ## Dynatrace Environment
 
 You must have access to a Dynatrace SaaS environment.[Sign up here](https://dt-url.net/trial){target="_blank"}

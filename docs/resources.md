@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-resources.js"
+
 # Resources
 
 ## Why would I use the Dynatrace OTEL Collector?

@@ -3,6 +3,8 @@
 --8<-- "snippets/disclaimer.md"
 --8<-- "snippets/view-code.md"
 --8<-- "snippets/overview-video.md"
+--8<-- "snippets/bizevent-homepage.js"
+
 
 In this hands-on demo, you will send logs from the OpenTelemetry demo application to Dynatrace.
 

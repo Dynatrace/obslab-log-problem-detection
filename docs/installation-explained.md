@@ -1,5 +1,7 @@
 ## Hurry up and wait
 
+--8<-- "snippets/bizevent-installation-explained.js"
+
 !!! warning "Grab a Coffee"
     Everything is installing. This can take a while.
 

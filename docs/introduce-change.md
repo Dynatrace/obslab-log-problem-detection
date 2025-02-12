@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-introduce-system-change.js"
+
 The application is running correctly. It is time to introduce a change into the system.
 
 This simulates releasing new functionality to your users in production.

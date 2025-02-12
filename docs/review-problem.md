@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-review-problem.js"
+
 !!! tip
     Right click each image and "Open image in new tab" to see a larger version.
 

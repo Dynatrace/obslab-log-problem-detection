@@ -1,3 +1,5 @@
+--8<-- "snippets/bizevent-whats-next.js"
+
 Learn more about:
 
 * The [Dynatrace Logs App](https://docs.dynatrace.com/docs/analyze-explore-automate/logs/lma-analysis/logs-app){target=_blank}

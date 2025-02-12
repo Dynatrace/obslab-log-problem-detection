@@ -1,5 +1,7 @@
 ## Access The Demo User Interface
 
+--8<-- "snippets/bizevent-access-user-interface.js"
+
 !!! tip
     This step is optional because there is a load generator already running. Observability data will be flowing into Dynatrace.
 
