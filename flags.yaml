@@ -125,5 +125,5 @@ metadata:
     app.kubernetes.io/version: 1.11.0
     helm.sh/chart: opentelemetry-demo-0.32.0
     opentelemetry.io/name: my-otel-demo
-  name: my-otel-demo-flagd-config
+  name: flagd-config
   namespace: default
