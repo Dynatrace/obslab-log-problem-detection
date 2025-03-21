@@ -1,6 +1,6 @@
 #!/bin/bash
 # Usage: ./runtimeChange.sh serviceName flagKey newFlagValue
-# eg. ./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
+# eg. ./runtimeChange.sh cart cartFailure on
 
 echo "Changing feature flag key: $2 to $3 for service: $1"
 
@@ -44,4 +44,4 @@ curl -X POST "$full_gen2_url/api/v2/events/ingest" \
   }"
 
 echo
-echo "Now manually change cartServiceFailure.defaultValue to on in flags.yaml and apply using kubectl"
+echo "Now manually change cartFailure.defaultValue to on in flags.yaml and apply using kubectl"
