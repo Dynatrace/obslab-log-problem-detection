@@ -32,19 +32,6 @@ components:
         and review the [Ops runbook](https://hci34192.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
   flagd:
     enabled: true
-    imageOverride:
-      repository: "ghcr.io/open-feature/flagd"
-      tag: "v0.12.2"
-    command:
-      - "/flagd-build"
-      - "start"
-      - "--port"
-      - "8013"
-      - "--uri"
-      - "file:./etc/flagd/demo.flagd.json"
-    mountedEmptyDirs:
-      - name: config-rw
-        mountPath: /etc/flagd
     useDefault:
       env: true
     resources:
@@ -57,27 +44,6 @@ components:
           env: true
         service:
           port: 4000
-        env:
-          - name: FLAGD_METRICS_EXPORTER
-            value: otel
-          - name: OTEL_EXPORTER_OTLP_ENDPOINT
-            value: http://$(OTEL_COLLECTOR_NAME):4318
         resources:
           limits:
             memory: 300Mi
-        volumeMounts:
-          - name: config-rw
-            mountPath: /app/data
-    initContainers:
-      - name: init-config
-        image: busybox
-        command: ["sh", "-c", "cp /config-ro/demo.flagd.json /config-rw/demo.flagd.json && cat /config-rw/demo.flagd.json"]
-        volumeMounts:
-          - mountPath: /config-ro
-            name: config-ro
-          - mountPath: /config-rw
-            name: config-rw
-    additionalVolumes:
-      - name: config-ro
-        configMap:
-          name: flagd-config
