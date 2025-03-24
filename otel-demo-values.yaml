@@ -20,7 +20,7 @@ default:
       value: 'dynatrace-collector-opentelemetry-collector'
 
 components:
-  cartService:
+  cart:
     podAnnotations:
       ownedBy: teamA
       product: otel-demo-app
@@ -28,5 +28,5 @@ components:
       environment: production
       supportInfo: |+
         ## Cart Service Issues Support Information
-        If cartService is having issues, please contact the owner
+        If cart service is having issues, please contact the owner
         and review the [Ops runbook](FULL_APPS_URL_PLACEHOLDER/ui/document/DOCUMENT_ID_PLACEHOLDER)
