@@ -20,7 +20,7 @@ default:
       value: 'dynatrace-collector-opentelemetry-collector'
 
 components:
-  cartService:
+  cart:
     podAnnotations:
       ownedBy: teamA
       product: otel-demo-app
@@ -28,5 +28,22 @@ components:
       environment: production
       supportInfo: |+
         ## Cart Service Issues Support Information
-        If cartService is having issues, please contact the owner
-        and review the [Ops runbook](FULL_APPS_URL_PLACEHOLDER/ui/document/DOCUMENT_ID_PLACEHOLDER)
+        If cart service is having issues, please contact the owner
+        and review the [Ops runbook](https://hci34192.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
+  flagd:
+    enabled: true
+    useDefault:
+      env: true
+    resources:
+      limits:
+        memory: 300Mi
+    # flagd-ui as a sidecar container in the same pod so the flag json file can be shared
+    sidecarContainers:
+      - name: flagd-ui
+        useDefault:
+          env: true
+        service:
+          port: 4000
+        resources:
+          limits:
+            memory: 300Mi

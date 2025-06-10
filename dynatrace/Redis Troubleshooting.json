@@ -17,7 +17,7 @@
             "showTitle": false,
             "state": {
                 "input": {
-                    "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                    "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 1",
                     "timeframe": {
                         "from": "now()-30m",
                         "to": "now()"
@@ -37,9 +37,9 @@
                         "records": [],
                         "metadata": {
                             "grail": {
-                                "canonicalQuery": "timeseries by:{dt.entity.service}, `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count)\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                                "canonicalQuery": "timeseries by:{dt.entity.service}, `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count)\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 1",
                                 "timezone": "Australia/Brisbane",
-                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1",
+                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 1",
                                 "scannedRecords": 15,
                                 "dqlVersion": "V1_0",
                                 "scannedBytes": 0,
@@ -80,7 +80,7 @@
                             "from": "now()-30m",
                             "to": "now()"
                         },
-                        "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 1"
+                        "value": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 1"
                     }
                 },
                 "visualizationSettings": {
@@ -170,7 +170,7 @@
                                 },
                                 "forecastHorizon": 100,
                                 "forecastOffset": 1,
-                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 100"
+                                "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 100"
                             }
                         },
                         "lastExecution": {
@@ -187,7 +187,7 @@
                                     },
                                     "forecastHorizon": 100,
                                     "forecastOffset": 1,
-                                    "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| limit 100"
+                                    "query": "timeseries `A: avg(dt.service.request.failure_count)` = avg(dt.service.request.failure_count), by: { dt.entity.service }\n| fieldsAdd dt.entity.service.name = entityName(dt.entity.service)\n| filter dt.entity.service.name == \"cart\"\n| limit 100"
                                 }
                             }
                         },
@@ -207,7 +207,7 @@
         {
             "id": "acbd1234-1234-dead-beef-0f2e12d6afcf",
             "type": "markdown",
-            "markdown": "# Step 1: Problems relating to Configuration Changes\n\nThis chart shows configuration change events, the feature flag key (eg. `cartServiceFailure`) and new value (eg. `on` or `off`) and any related problems (different colour bars).\n\n\n\nSo, did a recent configuration change cause an issue?"
+            "markdown": "# Step 1: Problems relating to Configuration Changes\n\nThis chart shows configuration change events, the feature flag key (eg. `cartFailure`) and new value (eg. `on` or `off`) and any related problems (different colour bars).\n\n\n\nSo, did a recent configuration change cause an issue?"
         },
         {
             "id": "acbd1234-1234-dead-beef-7f786349c14f",
@@ -216,7 +216,7 @@
             "drilldownPath": [],
             "state": {
                 "input": {
-                    "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
+                    "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"cart\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
                     "timeframe": {
                         "from": "now()-24h",
                         "to": "now()"
@@ -236,9 +236,9 @@
                         "records": [],
                         "metadata": {
                             "grail": {
-                                "canonicalQuery": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries by:{feature_flag.key, defaultValue}, count()\n| append \n\t[\n\t\tfetch dt.davis.problems\n\t\t| filter matchesPhrase(event.name, \"redis\")\n\t\t| makeTimeseries by:{event.name}, count()\n\t]",
+                                "canonicalQuery": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"cart\"\n| makeTimeseries by:{feature_flag.key, defaultValue}, count()\n| append \n\t[\n\t\tfetch dt.davis.problems\n\t\t| filter matchesPhrase(event.name, \"redis\")\n\t\t| makeTimeseries by:{event.name}, count()\n\t]",
                                 "timezone": "Australia/Brisbane",
-                                "query": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
+                                "query": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"cart\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]",
                                 "scannedRecords": 73,
                                 "dqlVersion": "V1_0",
                                 "scannedBytes": 25062,
@@ -349,7 +349,7 @@
                             "from": "now()-24h",
                             "to": "now()"
                         },
-                        "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"my-otel-demo-cartservice\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]"
+                        "value": "fetch events\n| filter event.type == \"CUSTOM_CONFIGURATION\"\n| filter dt.entity.service.name == \"cart\"\n| makeTimeseries count(), by: {feature_flag.key, defaultValue}\n// Add a second timeseries\n// To show problem titles containing the word \"redis\" (case insensitive)\n| append [fetch dt.davis.problems\n| filter matchesPhrase(event.name, \"redis\")\n| makeTimeseries count(), by: {event.name}]"
                     }
                 },
                 "visualizationSettings": {

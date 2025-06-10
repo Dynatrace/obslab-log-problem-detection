@@ -51,12 +51,12 @@ config:
             key_regex: metadata.dynatrace.com/(.*)
             from: pod
           # Extracts the value of a pod annotation with key `ownedBy` and inserts it as a resource attribute with key `dt.owner`
-          # see otel-demo-values.yaml for where `ownedBy` is set as a custom annotation only on the `cartservice` pods
+          # see otel-demo-values.yaml for where `ownedBy` is set as a custom annotation only on the `cart` pods
           - tag_name: dt.owner
             key: ownedBy
             from: pod
           # Extracts the value of a pod annotation with key `product` and inserts it as a resource attribute with key `dt.cost.product`
-          # see otel-demo-values.yaml for where `product` is set as a custom annotation only on the `cartservice` pods
+          # see otel-demo-values.yaml for where `product` is set as a custom annotation only on the `cart` pods
           - tag_name: dt.cost.product
             key: product
             from: pod
@@ -126,13 +126,13 @@ config:
             - set(attributes["dt.kubernetes.cluster.id"], attributes["k8s.cluster.uid"]) where IsString(attributes["k8s.cluster.uid"])
         - context: log
           # statements:
-          #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cartservice"
+          #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cart"
           statements:
             # Use string "true" here
             # not boolean as it is more flexible in the future
             # Case insensitive match
             # - set(attributes["alertme"], "true")
-            #   where resource.attributes["service.name"] == "cartservice"
+            #   where resource.attributes["service.name"] == "cart"
             #   and IsMatch(body, "(?i)getcartasync.*")
             - set(attributes["k8s.workload.kind"], "job") where IsString(attributes["k8s.job.name"])
             - set(attributes["k8s.workload.name"], attributes["k8s.job.name"]) where IsString(attributes["k8s.job.name"])
@@ -153,11 +153,11 @@ config:
             - delete_key(attributes, "k8s.cronjob.name")
             - delete_key(attributes, "k8s.job.name")
             - set(attributes["alertmessage"], "Critical Redis connection error!")
-              where resource.attributes["service.name"] == "cartservice"
+              where resource.attributes["service.name"] == "cart"
               and resource.attributes["deployment.release_stage"] == "production"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
             - set(attributes["priority"], "1")
-              where resource.attributes["service.name"] == "cartservice"
+              where resource.attributes["service.name"] == "cart"
               and resource.attributes["deployment.release_stage"] == "production"
               and IsMatch(body, "(?i)wasn't able to connect to redis.*")
       metric_statements:
