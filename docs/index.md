@@ -33,13 +33,6 @@ This demo uses the [OpenTelemetry demo application](https://opentelemetry.io/doc
 
 ![breaking change architecture](images/breaking-change-architecture.png)
 
-## Compatibility
-
-| Deployment         | Tutorial Compatible |
-|--------------------|---------------------|
-| Dynatrace Managed  | ❌                 |
-| Dynatrace SaaS     | ✔️                 |
-
 <div class="grid cards" markdown>
 - [Click Here to Begin :octicons-arrow-right-24:](getting-started.md)
 </div>
