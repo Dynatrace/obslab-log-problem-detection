@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>This step is optional because there is a load generator already running. Observability data will be flowing into Dynatrace.</p>
 </div>
 <p>Expose the user interface on port 8080 by port-forwarding:</p>
-<div class="highlight"><pre><span></span><code>kubectl -n default port-forward svc/frontendproxy 8080:8080
+<div class="highlight"><pre><span></span><code>kubectl -n default port-forward svc/frontend-proxy 8080:8080
 </code></pre></div>
 <p>Go to the <code>Ports</code> tab, right click the port <code>8080</code> and choose <code>Open in Browser</code>.</p>
 <p>You should see the OpenTelemetry demo application.</p>
