@@ -7,26 +7,22 @@ This simulates releasing new functionality to your users in production.
 ## Inform Dynatrace
 
 First, inform Dynatrace that a change is about to occur.
-Namely, you are going to make a change to the `my-otel-demo-cartservice` service 
-by changing the `cartServiceFailure` feature flag from `off` to `on`.
+Namely, you are going to make a change to the `cart` service 
+by changing the `cartFailure` feature flag from `off` to `on`.
 
-Tell Dynatrace about the upcoming change by sending an event (note: This event does **not** actually make the change; you need to do this).
+Tell Dynatrace about the upcoming change by sending an event (note: This event does **not** actually make the change; you will do this manually in the following step).
 
 Run the following:
 
 ```
-./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
+./runtimeChange.sh cart cartFailure on
 ```
-
-Refresh the `my-otel-demo-cartservice` page and near the bottom you should see the configuration change event.
-
-![configuration changed event](images/configuration-change-event.png)
 
 ## Make Change
 
 Open this file: `flags.yaml`
 
-Change the `defaultValue` of `cartServiceFailure` from `"off"` to `"on"` (scroll to line `75`)
+Change the `defaultValue` of `cartFailure` from `"off"` to `"on"` (scroll to line `75`)
 
 ![feature flag YAML](images/change-feature-flag.png)
 
@@ -63,10 +59,10 @@ In Dynatrace:
 
 Wait for the problem to appear.
 
-You can also open the `my-otel-demo-cartservice` Service screen to monitor for failures.
+You can also open the `cart` Service screen to monitor for failures.
 
 * Press `ctrl + k`. Search for `Services`
-* Open the services app + navigate to the `my-otel-demo-cartservice`
+* Open the services app + navigate to the `cart`
 * Monitor the `Failed requests` chart
 
 <div class="grid cards" markdown>

@@ -12,16 +12,10 @@ For example, to validate logs are available for `cartservice`, use one of the fo
 
 ## Use the logs app
 * Open the `logs` app.
-* Click the `+` icon and add a filter for `service.name` with a value `cartservice`
-* Run the query to see the latest `cartservice` logs
+* Click the `+` icon and add a filter for `service.name` with a value `cart`
+* Run the query to see the latest `cart` service logs
 
-![cart service logs](images/logs-screen-cartservice-filter.png)
-
-## Use the services screen
-* Open the `my-otel-demo-cartservice` service screen
-* Click `Run query` on the logs panel
-
-![logs on services screen](images/logs-on-service-screen.png)
+![cart service logs](images/log-screen-cart-service-filter.png)
 
 ## Use the notebooks app
 * Open the `notebooks` app
@@ -30,7 +24,7 @@ For example, to validate logs are available for `cartservice`, use one of the fo
 
 ```
 fetch logs
-| filter service.name == "cartservice"
+| filter service.name == "cart"
 | limit 10
 ```
 

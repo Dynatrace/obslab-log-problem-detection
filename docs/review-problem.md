@@ -18,7 +18,7 @@ You should see a problem titled: `Redis connection errors`
 
 ![problem details](images/problem-details.png)
 
-Opening the problem record, you will see that it has effected one entity: the `my-otel-demo-cartservice`.
+Opening the problem record, you will see that it has effected one entity: the `cart` service.
 
 Navigate to the `Logs` panel. Click `Run query` next to `Show x errors` (your number of errors may differ from the screenshot)
 

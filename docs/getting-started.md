@@ -48,17 +48,6 @@ In Dynatrace:
 
 ![notebook ID](images/notebook-id.png)
 
-## Install New Problems App
-
-In Dynatrace:
-
-* Press `ctrl + k`. Search for `Hub`.
-* Open the `Problems` app and click `Install`
-
-![problems app on hub](images/problems-app-on-hub.png)
-
-![problems app install](images/problems-app-install.png)
-
 ## Create OpenPipeline
 
 ### Define New Log Pipeline
