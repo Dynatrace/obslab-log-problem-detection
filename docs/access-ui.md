@@ -8,7 +8,7 @@
 Expose the user interface on port 8080 by port-forwarding:
 
 ```
-kubectl -n default port-forward svc/frontendproxy 8080:8080
+kubectl -n default port-forward svc/frontend-proxy 8080:8080
 ```
 
 Go to the `Ports` tab, right click the port `8080` and choose `Open in Browser`.
