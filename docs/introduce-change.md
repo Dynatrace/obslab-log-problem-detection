@@ -18,11 +18,15 @@ Run the following:
 ./runtimeChange.sh cart cartFailure on
 ```
 
+You should see this event appear on the `cart` service screen:
+
+![cart event](images/cart-service-event.png)
+
 ## Make Change
 
 Open this file: `flags.yaml`
 
-Change the `defaultValue` of `cartFailure` from `"off"` to `"on"` (scroll to line `75`)
+Change the `defaultValue` of `cartFailure` from `"off"` to `"on"` (scroll to line `69`)
 
 ![feature flag YAML](images/change-feature-flag.png)
 
@@ -35,7 +39,7 @@ kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 You should see:
 
 ```
-configmap/my-otel-demo-flagd-config configured
+configmap/flagd-config configured
 ```
 
 !!! warning "Be Patient"
