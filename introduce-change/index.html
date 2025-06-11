@@ -647,23 +647,23 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>This simulates releasing new functionality to your users in production.</p>
 <h2 id="inform-dynatrace">Inform Dynatrace<a class="headerlink" href="#inform-dynatrace" title="Permanent link">#</a></h2>
 <p>First, inform Dynatrace that a change is about to occur.
-Namely, you are going to make a change to the <code>my-otel-demo-cartservice</code> service 
-by changing the <code>cartServiceFailure</code> feature flag from <code>off</code> to <code>on</code>.</p>
-<p>Tell Dynatrace about the upcoming change by sending an event (note: This event does <strong>not</strong> actually make the change; you need to do this).</p>
+Namely, you are going to make a change to the <code>cart</code> service 
+by changing the <code>cartFailure</code> feature flag from <code>off</code> to <code>on</code>.</p>
+<p>Tell Dynatrace about the upcoming change by sending an event (note: This event does <strong>not</strong> actually make the change; you will do this manually in the following step).</p>
 <p>Run the following:</p>
-<div class="highlight"><pre><span></span><code>./runtimeChange.sh my-otel-demo-cartservice cartServiceFailure on
+<div class="highlight"><pre><span></span><code>./runtimeChange.sh cart cartFailure on
 </code></pre></div>
-<p>Refresh the <code>my-otel-demo-cartservice</code> page and near the bottom you should see the configuration change event.</p>
-<p><img alt="configuration changed event" src="../images/configuration-change-event.png" /></p>
+<p>You should see this event appear on the <code>cart</code> service screen:</p>
+<p><img alt="cart event" src="../images/cart-service-event.png" /></p>
 <h2 id="make-change">Make Change<a class="headerlink" href="#make-change" title="Permanent link">#</a></h2>
 <p>Open this file: <code>flags.yaml</code></p>
-<p>Change the <code>defaultValue</code> of <code>cartServiceFailure</code> from <code>"off"</code> to <code>"on"</code> (scroll to line <code>75</code>)</p>
+<p>Change the <code>defaultValue</code> of <code>cartFailure</code> from <code>"off"</code> to <code>"on"</code> (scroll to line <code>69</code>)</p>
 <p><img alt="feature flag YAML" src="../images/change-feature-flag.png" /></p>
 <p>Now apply the change by running this command:</p>
 <div class="highlight"><pre><span></span><code>kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
 </code></pre></div>
 <p>You should see:</p>
-<div class="highlight"><pre><span></span><code>configmap/my-otel-demo-flagd-config configured
+<div class="highlight"><pre><span></span><code>configmap/flagd-config configured
 </code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Be Patient</p>
@@ -681,10 +681,10 @@ It will do this 1/10th of the time, so be patient, it can take a few moments for
 <li>Open the problems app</li>
 </ul>
 <p>Wait for the problem to appear.</p>
-<p>You can also open the <code>my-otel-demo-cartservice</code> Service screen to monitor for failures.</p>
+<p>You can also open the <code>cart</code> Service screen to monitor for failures.</p>
 <ul>
 <li>Press <code>ctrl + k</code>. Search for <code>Services</code></li>
-<li>Open the services app + navigate to the <code>my-otel-demo-cartservice</code></li>
+<li>Open the services app + navigate to the <code>cart</code></li>
 <li>Monitor the <code>Failed requests</code> chart</li>
 </ul>
 <div class="grid cards">

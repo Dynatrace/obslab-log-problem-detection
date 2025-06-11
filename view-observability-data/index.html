@@ -412,15 +412,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-the-services-screen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use the services screen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#use-the-notebooks-app" class="md-nav__link">
     <span class="md-ellipsis">
       Use the notebooks app
@@ -581,15 +572,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#use-the-services-screen" class="md-nav__link">
-    <span class="md-ellipsis">
-      Use the services screen
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#use-the-notebooks-app" class="md-nav__link">
     <span class="md-ellipsis">
       Use the notebooks app
@@ -634,16 +616,10 @@ and <a href="https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-
 <h2 id="use-the-logs-app">Use the logs app<a class="headerlink" href="#use-the-logs-app" title="Permanent link">#</a></h2>
 <ul>
 <li>Open the <code>logs</code> app.</li>
-<li>Click the <code>+</code> icon and add a filter for <code>service.name</code> with a value <code>cartservice</code></li>
-<li>Run the query to see the latest <code>cartservice</code> logs</li>
+<li>Click the <code>+</code> icon and add a filter for <code>service.name</code> with a value <code>cart</code></li>
+<li>Run the query to see the latest <code>cart</code> service logs</li>
 </ul>
-<p><img alt="cart service logs" src="../images/logs-screen-cartservice-filter.png" /></p>
-<h2 id="use-the-services-screen">Use the services screen<a class="headerlink" href="#use-the-services-screen" title="Permanent link">#</a></h2>
-<ul>
-<li>Open the <code>my-otel-demo-cartservice</code> service screen</li>
-<li>Click <code>Run query</code> on the logs panel</li>
-</ul>
-<p><img alt="logs on services screen" src="../images/logs-on-service-screen.png" /></p>
+<p><img alt="cart service logs" src="../images/log-screen-cart-service-filter.png" /></p>
 <h2 id="use-the-notebooks-app">Use the notebooks app<a class="headerlink" href="#use-the-notebooks-app" title="Permanent link">#</a></h2>
 <ul>
 <li>Open the <code>notebooks</code> app</li>
@@ -651,7 +627,7 @@ and <a href="https://docs.dynatrace.com/docs/observe-and-explore/dashboards-and-
 <li>Use the following DQL query:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>fetch logs
-| filter service.name == &quot;cartservice&quot;
+| filter service.name == &quot;cart&quot;
 | limit 10
 </code></pre></div>
 <p><img alt="logs in notebook" src="../images/logs-in-notebook.png" /></p>
