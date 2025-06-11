@@ -3,7 +3,7 @@
 !!! tip
     Right click each image and "Open image in new tab" to see a larger version.
 
-After a few moments, DAVIS will detect the issue and create a problem.
+After a few moments, Dynatrace will detect the issue and create a problem.
 
 !!! question
     Let's see what Dynatrace can tell us about this issue...
@@ -107,7 +107,7 @@ The first chart shows a increased failure rate for the `cartservice`.
 
 OK, we're on to something...
 
-DAVIS told us (and our investigation confirmed) that the problem originated in the `cartservice`.
+Dynatrace told us (and our investigation confirmed) that the problem originated in the `cart` service.
 
 We know that the problem was caused by a failure to connect to Redis. But what caused that error? Did something change?
 
@@ -118,7 +118,7 @@ Chart two shows both configuration events and problems on the same chart.
 ![configuration changes and problems](images/problems-and-change-chart.png)
 
 !!! tip "Change is the cause of most failures"
-    Something changed on the `cartservice` immediately prior
+    Something changed on the `cart` service immediately prior
     to an issue occuring.
 
     Thanks to the "configuration changed" event we have all necessary information to understand the true root cause.

@@ -91,7 +91,7 @@ In Dynatrace:
 
 Wait for the problem to appear.
 
-![problem snippet](images/problem_snippet.png)
+![problem snippet](images/problem-snippet.png)
 
 You can also open the `cart` Service screen to monitor for failures.
 
