@@ -731,7 +731,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="admonition-title">Tip</p>
 <p>Right click each image and "Open image in new tab" to see a larger version.</p>
 </div>
-<p>After a few moments, DAVIS will detect the issue and create a problem.</p>
+<p>After a few moments, Dynatrace will detect the issue and create a problem.</p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>Let's see what Dynatrace can tell us about this issue...</p>
@@ -804,14 +804,14 @@ Just click each chart and click the <code>Run</code> button</p>
 </div>
 <p>The first chart shows a increased failure rate for the <code>cartservice</code>.</p>
 <p>OK, we're on to something...</p>
-<p>DAVIS told us (and our investigation confirmed) that the problem originated in the <code>cartservice</code>.</p>
+<p>Dynatrace told us (and our investigation confirmed) that the problem originated in the <code>cart</code> service.</p>
 <p>We know that the problem was caused by a failure to connect to Redis. But what caused that error? Did something change?</p>
 <h3 id="chart-2-change-caused-the-failure">Chart 2: Change Caused the Failure<a class="headerlink" href="#chart-2-change-caused-the-failure" title="Permanent link">#</a></h3>
 <p>Chart two shows both configuration events and problems on the same chart.</p>
 <p><img alt="configuration changes and problems" src="../images/problems-and-change-chart.png" /></p>
 <div class="admonition tip">
 <p class="admonition-title">Change is the cause of most failures</p>
-<p>Something changed on the <code>cartservice</code> immediately prior
+<p>Something changed on the <code>cart</code> service immediately prior
 to an issue occuring.</p>
 <p>Thanks to the "configuration changed" event we have all necessary information to understand the true root cause.</p>
 </div>
