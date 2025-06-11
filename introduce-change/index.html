@@ -443,9 +443,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#restart-flagd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restart Flagd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generate-your-own-traffic" class="md-nav__link">
     <span class="md-ellipsis">
       Generate Your Own Traffic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-error-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait for Error Logs
     </span>
   </a>
   
@@ -599,9 +617,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#restart-flagd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Restart Flagd
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#generate-your-own-traffic" class="md-nav__link">
     <span class="md-ellipsis">
       Generate Your Own Traffic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wait-for-error-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wait for Error Logs
     </span>
   </a>
   
@@ -665,6 +701,17 @@ by changing the <code>cartFailure</code> feature flag from <code>off</code> to <
 <p>You should see:</p>
 <div class="highlight"><pre><span></span><code>configmap/flagd-config configured
 </code></pre></div>
+<h2 id="restart-flagd">Restart Flagd<a class="headerlink" href="#restart-flagd" title="Permanent link">#</a></h2>
+<p>Normally flagd can detect changes to files in realtime, but in some environments (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.</p>
+<p>To be sure that the new value of <code>off</code> is used, restart flagd now:</p>
+<div class="highlight"><pre><span></span><code>kubectl scale deploy flagd --replicas=0
+</code></pre></div>
+<p>Wait until the <code>flagd</code> pod disappears from the list when you run this command (in our resource constrained environment this take 30s - 1min). Re-run the <code>get pods</code> command until you see it disappear:</p>
+<div class="highlight"><pre><span></span><code>kubectl get pods
+</code></pre></div>
+<p>Now scale flagd back up:</p>
+<div class="highlight"><pre><span></span><code>kubectl scale deploy flagd --replicas=1
+</code></pre></div>
 <div class="admonition warning">
 <p class="admonition-title">Be Patient</p>
 <p>The application will now generate errors when emptying the users cart.
@@ -674,6 +721,9 @@ It will do this 1/10th of the time, so be patient, it can take a few moments for
 <p>There is a load generator running, but you can generate traffic by accessing the site.</p>
 <p>See <a href="../access-ui/" target="_blank">access user interface</a></p>
 <p>Repeatedly add an item to your cart, go to the cart and empty it. Hope you're "lucky" that you generate a backend failure.</p>
+<h2 id="wait-for-error-logs">Wait for Error Logs<a class="headerlink" href="#wait-for-error-logs" title="Permanent link">#</a></h2>
+<p>Use the Logs app and wait until you see <code>ERROR</code> logs appear.</p>
+<p><img alt="errors in logs app" src="../images/errors_start_in_logs.png" /></p>
 <h2 id="open-problems-app">Open Problems App<a class="headerlink" href="#open-problems-app" title="Permanent link">#</a></h2>
 <p>In Dynatrace:</p>
 <ul>
@@ -681,6 +731,7 @@ It will do this 1/10th of the time, so be patient, it can take a few moments for
 <li>Open the problems app</li>
 </ul>
 <p>Wait for the problem to appear.</p>
+<p><img alt="problem snippet" src="../images/problem_snippet.png" /></p>
 <p>You can also open the <code>cart</code> Service screen to monitor for failures.</p>
 <ul>
 <li>Press <code>ctrl + k</code>. Search for <code>Services</code></li>
