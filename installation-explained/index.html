@@ -824,11 +824,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <p>While you wait, the section below will explain what you've just configured and how it works.</p>
 </div>
 <p>The OpenTelemetry demo and the Dynatrace collector will be installed automatically.</p>
-<p>The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as deployment.release_stage variables.</p>
+<p>The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables.</p>
 <p>They will also be stored in a Kubernetes secret <code>dynatrace-otelcol-dt-api-credentials</code></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Type <code>printenv</code> to see all deployment.release_stage variables
+<p>Type <code>printenv</code> to see all environment variables
 set by GitHub.</p>
 </div>
 <h2 id="explain-the-configuration">Explain the Configuration<a class="headerlink" href="#explain-the-configuration" title="Permanent link">#</a></h2>

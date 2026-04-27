@@ -785,11 +785,11 @@ python runtime_change.py
 <div class="highlight"><pre><span></span><code>configmap/flagd-config configured
 </code></pre></div>
 <h2 id="restart-flagd">Restart Flagd<a class="headerlink" href="#restart-flagd" title="Permanent link">#</a></h2>
-<p>Normally flagd can detect changes to files in realtime, but in some deployment.release_stages (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.</p>
+<p>Normally flagd can detect changes to files in realtime, but in some environmentss (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.</p>
 <p>To be sure that the new value of <code>off</code> is used, restart flagd now:</p>
 <div class="highlight"><pre><span></span><code>kukubectl scale deploy flagd --replicas=0
 </code></pre></div>
-<p>Wait until the <code>flagd</code> pod disappears from the list when you run this command (in our resource constrained deployment.release_stage this take 30s - 1min). Re-run the <code>get pods</code> command until you see it disappear:</p>
+<p>Wait until the <code>flagd</code> pod disappears from the list when you run this command (in our resource constrained environment this take 30s - 1min). Re-run the <code>get pods</code> command until you see it disappear:</p>
 <div class="highlight"><pre><span></span><code>kubectl get pods
 </code></pre></div>
 <p>Now scale flagd back up:</p>
