@@ -12,7 +12,7 @@ For example, to validate logs are available for `cartservice`, use one of the fo
 
 ## Use the logs app
 * Open the `logs` app.
-* Click the `+` icon and add a filter for `service.name` with a value `cart`
+* Filter for `service.name` with a value `cart`
 * Run the query to see the latest `cart` service logs
 
 ![cart service logs](images/log-screen-cart-service-filter.png)

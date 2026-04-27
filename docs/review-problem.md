@@ -128,7 +128,7 @@ Chart two shows both configuration events and problems on the same chart.
 
 !!! success "🎉Congratulations 🎉"
     You have successfully completed this
-    Observability Lab. Continue below to clean up your environment.
+    Observability Lab. Continue below to clean up your deployment.release_stage.
 
 <div class="grid cards" markdown>
 - [Click Here to Begin :octicons-arrow-right-24:](cleanup.md)

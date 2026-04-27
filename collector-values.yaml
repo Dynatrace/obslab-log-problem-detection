@@ -1,7 +1,21 @@
 mode: deployment
 image:
   repository: ghcr.io/dynatrace/dynatrace-otel-collector/dynatrace-otel-collector
-  tag: latest
+  tag: 0.45.0
+livenessProbe:
+  httpGet:
+    path: /
+    port: 13133
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 2
+readinessProbe:
+  httpGet:
+    path: /
+    port: 13133
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 2
 command:
   name: dynatrace-otel-collector
 extraEnvs:
@@ -16,9 +30,14 @@ extraEnvs:
       name: dynatrace-otelcol-dt-api-credentials
       key: DT_ENDPOINT
 resources:
+  requests:
+    memory: 100Mi
   limits:
     memory: 512Mi
 config:
+  extensions:
+    health_check:
+      endpoint: "0.0.0.0:13133"
   receivers:
     jaeger: null
     prometheus: null
@@ -26,56 +45,35 @@ config:
     otlp:
       protocols:
         grpc:
-          endpoint: ${env:MY_POD_IP}:4317
+          endpoint: 0.0.0.0:4317
         http:
-          endpoint: ${env:MY_POD_IP}:4318
+          endpoint: 0.0.0.0:4318
+          cors:
+            allowed_origins:
+              - "http://*"
+              - "https://*"
     filelog: null
-  
-  processors:
-    cumulativetodelta:
 
+  processors:
+    cumulativetodelta: {}
     k8sattributes:
       extract:
-        metadata:
-          - k8s.pod.name
-          - k8s.pod.uid
-          - k8s.deployment.name
-          - k8s.statefulset.name
-          - k8s.daemonset.name
-          - k8s.cronjob.name
-          - k8s.namespace.name
-          - k8s.node.name
-          - k8s.cluster.uid
         annotations:
-          - tag_name: $$1
-            key_regex: metadata.dynatrace.com/(.*)
-            from: pod
-          # Extracts the value of a pod annotation with key `ownedBy` and inserts it as a resource attribute with key `dt.owner`
-          # see otel-demo-values.yaml for where `ownedBy` is set as a custom annotation only on the `cart` pods
-          - tag_name: dt.owner
-            key: ownedBy
-            from: pod
-          # Extracts the value of a pod annotation with key `product` and inserts it as a resource attribute with key `dt.cost.product`
-          # see otel-demo-values.yaml for where `product` is set as a custom annotation only on the `cart` pods
-          - tag_name: dt.cost.product
-            key: product
-            from: pod
-          # Extracts the value of a pod annotation with key `costCentre` and inserts it as a resource attribute with key `dt.cost.costcenter`
-          # Notice the deliberate English / US spelling differences to emphasis that `costCentre` is a custom annotation
-          # set in otel-demo-values.yaml
-          - tag_name: dt.cost.costcenter
+          - tag_name: costCentre
             key: costCentre
             from: pod
-          - tag_name: supportInfo
-            key: supportInfo
+          - tag_name: deployment.release_stage
+            key: deployment.release_stage
             from: pod
           - tag_name: deployment.release_product
             key: product
             from: pod
-          - tag_name: deployment.release_stage
-            key: environment
+          - tag_name: dt.owner
+            key: ownedBy
             from: pod
-      # How to associate the data to a pod (order matters)
+          - tag_name: supportInfo
+            key: supportInfo
+            from: pod
       pod_association:
         - sources:
           - from: resource_attribute
@@ -125,15 +123,7 @@ config:
             - set(attributes["dt.kubernetes.workload.name"], attributes["k8s.daemonset.name"]) where IsString(attributes["k8s.daemonset.name"])
             - set(attributes["dt.kubernetes.cluster.id"], attributes["k8s.cluster.uid"]) where IsString(attributes["k8s.cluster.uid"])
         - context: log
-          # statements:
-          #   - set(attributes["alertlevel"], "p4") where attributes["service.name"] == "cart"
           statements:
-            # Use string "true" here
-            # not boolean as it is more flexible in the future
-            # Case insensitive match
-            # - set(attributes["alertme"], "true")
-            #   where resource.attributes["service.name"] == "cart"
-            #   and IsMatch(body, "(?i)getcartasync.*")
             - set(attributes["k8s.workload.kind"], "job") where IsString(attributes["k8s.job.name"])
             - set(attributes["k8s.workload.name"], attributes["k8s.job.name"]) where IsString(attributes["k8s.job.name"])
             - set(attributes["k8s.workload.kind"], "cronjob") where IsString(attributes["k8s.cronjob.name"])
@@ -163,24 +153,27 @@ config:
       metric_statements:
           - context: resource
             statements: *k8s-statements
+
   exporters:
     debug:
       verbosity: detailed
-    otlphttp:
+    otlp_http:
       endpoint: "${env:DT_ENDPOINT}"
       headers:
         Authorization: "Api-Token ${env:DT_API_TOKEN}"
+
   service:
+    extensions: [health_check]
     pipelines:
-      metrics:
-        receivers: [otlp]
-        processors: [k8sattributes, cumulativetodelta]
-        exporters: [debug, otlphttp]
       traces:
         receivers: [otlp]
-        processors: [k8sattributes, transform]
-        exporters: [debug, otlphttp]
+        processors: []
+        exporters: [otlp_http]
+      metrics:
+        receivers: [otlp]
+        processors: [cumulativetodelta]
+        exporters: [otlp_http]
       logs:
         receivers: [otlp]
         processors: [k8sattributes, transform]
-        exporters: [debug, otlphttp]
+        exporters: [debug, otlp_http]

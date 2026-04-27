@@ -2,11 +2,11 @@
 
 --8<-- "snippets/bizevent-getting-started.js"
 
-## Dynatrace Environment
+## Dynatrace deployment.release_stage
 
-You must have access to a Dynatrace SaaS environment.[Sign up here](https://dt-url.net/trial){target="_blank"}
+You must have access to a Dynatrace SaaS deployment.release_stage. [Sign up here](https://dt-url.net/trial){target="_blank"}
 
-Save the Dynatrace environment URL:
+Save the Dynatrace deployment.release_stage URL:
 
 * Without the trailing slash
 * Without `.apps.` in the URL
@@ -14,7 +14,7 @@ Save the Dynatrace environment URL:
 The generic format is:
 
 ```
-https://<EnvironmentID>.<Environment>.<URL>
+https://<deployment.release_stageID>.<deployment.release_stage>.<URL>
 ```
 
 For example:
@@ -44,7 +44,7 @@ In Dynatrace:
 * Make a note of the notebook ID from the URL bar
 
 !!! warning
-    Your environment and notebook IDs will be different.
+    Your deployment.release_stage and notebook IDs will be different.
 
 ![notebook ID](images/notebook-id.png)
 
@@ -55,13 +55,13 @@ In Dynatrace:
 In Dynatrace:
 
 * Press `ctrl + k`. Search for `OpenPipeline`. Open the app
-* Ensure `Logs` is selected and select the `Pipelines` tab
+* Ensure `Process and contextualize` is selected and select the `Logs` item
 
 ![logs pipeline](images/pipeline-1.png)
 
-* Click `+ Pipeline` to create a new log ingest pipeline.
-* Click the pencil icon and rename the pipeline to `Log Errors`
-* Change to the `Data extraction` tab and add a new `Davis event` processor
+* Select `Pipelines` then `+ Pipeline` to create a new log ingest pipeline.
+* Name the pipeline `Log Errors`
+* Change to the `Davis` tab and add a new `Davis event` processor
 
 ![logs pipeline](images/pipeline-2.png)
 ![davis event pipeline](images/pipeline-davis-event.png)
@@ -160,9 +160,9 @@ In Dynatrace:
 
 --8<-- "snippets/codespace-details-warning-box.md"
 
-You've done the hard work! It is time to spin up the demo environment.
+You've done the hard work! It is time to spin up the demo deployment.release_stage.
 
-Click this button to open the demo environment. This will open in a new tab.
+Click this button to open the demo deployment.release_stage. This will open in a new tab.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace/obslab-log-problem-detection){target="_blank"}
 

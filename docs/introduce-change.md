@@ -15,10 +15,11 @@ Tell Dynatrace about the upcoming change by sending an event (note: This event d
 Run the following:
 
 ```
-./runtimeChange.sh cart cartFailure on
+source .env
+python runtime_change.py
 ```
 
-You should see this event appear on the `cart` service screen:
+You should see this event appear on the `Events` tab of the `cart` service screen:
 
 ![cart event](images/cart-service-event.png)
 
@@ -33,7 +34,7 @@ Change the `defaultValue` of `cartFailure` from `"off"` to `"on"` (scroll to lin
 Now apply the change by running this command:
 
 ```
-kubectl apply -f $CODESPACE_VSCODE_FOLDER/flags.yaml
+kubectl apply -f flags.yaml
 ```
 
 You should see:
@@ -44,15 +45,15 @@ configmap/flagd-config configured
 
 ## Restart Flagd
 
-Normally flagd can detect changes to files in realtime, but in some environments (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.
+Normally flagd can detect changes to files in realtime, but in some deployment.release_stages (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.
 
 To be sure that the new value of `off` is used, restart flagd now:
 
 ```
-kubectl scale deploy flagd --replicas=0
+kukubectl scale deploy flagd --replicas=0
 ```
 
-Wait until the `flagd` pod disappears from the list when you run this command (in our resource constrained environment this take 30s - 1min). Re-run the `get pods` command until you see it disappear:
+Wait until the `flagd` pod disappears from the list when you run this command (in our resource constrained deployment.release_stage this take 30s - 1min). Re-run the `get pods` command until you see it disappear:
 
 ```
 kubectl get pods

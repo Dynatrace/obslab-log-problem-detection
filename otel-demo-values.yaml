@@ -25,25 +25,27 @@ components:
       ownedBy: teamA
       product: otel-demo-app
       costCentre: centre1
-      environment: production
+      deployment.release_stage: production
       supportInfo: |+
         ## Cart Service Issues Support Information
         If cart service is having issues, please contact the owner
         and review the [Ops runbook](https://hci34192.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
   flagd:
     enabled: true
+    # Turn off flagd-ui as it always crashes and we don't need it
+    sidecarContainers: []
     useDefault:
       env: true
     resources:
+      requests:
+        memory: 100Mi
       limits:
         memory: 300Mi
-    # flagd-ui as a sidecar container in the same pod so the flag json file can be shared
-    sidecarContainers:
-      - name: flagd-ui
-        useDefault:
-          env: true
-        service:
-          port: 4000
-        resources:
-          limits:
-            memory: 300Mi
+  accounting:
+    enabled: true
+    resources:
+      requests:
+        memory: 100Mi
+      limits:
+        memory: 300Mi
+

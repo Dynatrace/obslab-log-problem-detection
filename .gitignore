@@ -1,2 +1,8 @@
 site/*
 notes.txt
+plans/
+pyvenv.cfg
+__pycache__
+bin/
+lib/
+.env

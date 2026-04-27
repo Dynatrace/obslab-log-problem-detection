@@ -9,12 +9,12 @@
 
 The OpenTelemetry demo and the Dynatrace collector will be installed automatically.
 
-The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables.
+The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as deployment.release_stage variables.
 
 They will also be stored in a Kubernetes secret `dynatrace-otelcol-dt-api-credentials`
 
 !!! tip
-    Type `printenv` to see all environment variables
+    Type `printenv` to see all deployment.release_stage variables
     set by GitHub.
 
 ## Explain the Configuration
@@ -42,14 +42,14 @@ They can add as many or few as they wish.
 You can see these annotations with this command:
 
 ```
-kubectl describe pod -l app.kubernetes.io/component=cartservice
+kubectl describe pod -l app.kubernetes.io/component=cart
 ```
 
 ![podAnnotations](images/podAnnotations.png)
 
 ### 2. Collector Enriches Logs
 
-Logs are [sent out of the cartservice via OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/demo/services/cart/#logs){target=_blank} to the collector.
+Logs are [sent out of the cart via OpenTelemetry Protocol (OTLP)](https://opentelemetry.io/docs/demo/services/cart/#logs){target=_blank} to the collector.
 
 As log lines flow [through the collector pipeline](https://github.com/Dynatrace/obslab-log-problem-detection/blob/main/collector-values.yaml#L148){target=_blank},
 the logs are processed by two `processors`: The [k8sattributes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/k8sattributesprocessor){target=_blank} and [transform](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor){target=_blank} processors.
@@ -74,7 +74,7 @@ Thus this log line:
 May become:
 
 ```
-2024-10-01 10:00:00 INFO A log message dt.owner=Susan k8s.pod-name=cart-service-abc1234 ...
+2024-10-01 10:00:00 INFO A log message dt.owner=Susan k8s.pod-name=cart-abc1234 ...
 ```
 
 ### transform Processor
@@ -90,12 +90,12 @@ Two brand new attributes `alertmessage` and `priority` are dynamically added (se
 
 ```
 - set(attributes["alertmessage"], "Critical Redis connection error!")
-  where resource.attributes["service.name"] == "cartservice"
+  where resource.attributes["service.name"] == "cart"
   and resource.attributes["deployment.release_stage"] == "production"
   and IsMatch(body, "(?i)wasn't able to connect to redis.*")
 
 - set(attributes["priority"], "1")
-  where resource.attributes["service.name"] == "cartservice"
+  where resource.attributes["service.name"] == "cart"
   and resource.attributes["deployment.release_stage"] == "production"
   and IsMatch(body, "(?i)wasn't able to connect to redis.*")
 ```
@@ -132,27 +132,29 @@ The command will appear to hang until all pods are available.
 When all pods are running, the output will look like this:
 
 ```
-pod/dynatrace-collector-opentelemetry-collector-******-**** condition met
-pod/my-otel-demo-accountingservice-******-**** condition met
-pod/my-otel-demo-adservice-******-**** condition met
-pod/my-otel-demo-cartservice-******-**** condition met
-pod/my-otel-demo-checkoutservice-******-**** condition met
-pod/my-otel-demo-currencyservice-******-**** condition met
-pod/my-otel-demo-emailservice-******-**** condition met
-pod/my-otel-demo-flagd-******-**** condition met
-pod/my-otel-demo-frauddetectionservice-******-**** condition met
-pod/my-otel-demo-frontend-******-**** condition met
-pod/my-otel-demo-frontendproxy-******-**** condition met
-pod/my-otel-demo-imageprovider-******-**** condition met
-pod/my-otel-demo-kafka-******-**** condition met
-pod/my-otel-demo-loadgenerator-******-**** condition met
-pod/my-otel-demo-paymentservice-******-**** condition met
-pod/my-otel-demo-productcatalogservice-******-**** condition met
-pod/my-otel-demo-prometheus-server-******-**** condition met
-pod/my-otel-demo-quoteservice-******-**** condition met
-pod/my-otel-demo-recommendationservice-******-**** condition met
-pod/my-otel-demo-shippingservice-******-**** condition met
-pod/my-otel-demo-valkey-******-**** condition met
+pod/accounting-58ff999fb7-m2brb condition met
+pod/ad-597686b699-8fgqv condition met
+pod/cart-7f67699fd8-b9gk6 condition met
+pod/checkout-866774f77f-c97rj condition met
+pod/currency-659fb4bdf6-4r62x condition met
+pod/dynatrace-collector-opentelemetry-collector-6b68486fb9-7hq48 condition met
+pod/email-5dd85846c-xfqsg condition met
+pod/flagd-fb5756f54-c68dd condition met
+pod/fraud-detection-6fc57f5c5c-8vbx8 condition met
+pod/frontend-7ff446b4d6-4fqjf condition met
+pod/frontend-proxy-7cdb64d859-fxjhb condition met
+pod/image-provider-7d59bccf66-vpqnc condition met
+pod/kafka-698c55c764-z9qpj condition met
+pod/llm-7d86d8f46c-f4plh condition met
+pod/load-generator-584d65648b-sh9jq condition met
+pod/payment-d97d79558-mdcvj condition met
+pod/postgresql-66fff77f5d-dknct condition met
+pod/product-catalog-8678c57d69-lr7gt condition met
+pod/product-reviews-6c468d787b-x7pfd condition met
+pod/quote-67b4d657bf-wvn57 condition met
+pod/recommendation-5ddd958c5c-s47sb condition met
+pod/shipping-c4f9b46c8-f8z9f condition met
+pod/valkey-cart-779654c7f4-6c8km condition met
 ```
 
 <div class="grid cards" markdown>
