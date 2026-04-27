@@ -75,8 +75,8 @@ if GITHUB_USER == "":
     if not loaded:
         logger.error("Did you create a .env file?")
 
-DT_deployment.release_stage_ID = os.environ.get("DT_deployment.release_stage_ID", "")
-DT_deployment.release_stage_TYPE = os.environ.get("DT_deployment.release_stage_TYPE", "live")
+DT_ENVIRONMENT_ID = os.environ.get("DT_ENVIRONMENT_ID", "")
+DT_ENVIRONMENT_TYPE = os.environ.get("DT_ENVIRONMENT_TYPE", "live")
 DT_API_TOKEN = os.environ.get("DT_API_TOKEN", "")
 
 # GEOLOCATION_DEV = "GEOLOCATION-0A41430434C388A9"
@@ -321,7 +321,7 @@ def build_dt_urls(dt_env_id, dt_env_type="live"):
       dt_tenant_apps = f"https://{dt_env_id}.{dt_env_type}.apps.dynatrace.com"
       dt_tenant_live = f"https://{dt_env_id}.{dt_env_type}.dynatrace.com"
 
-    # if deployment.release_stage is "dev" or "sprint"
+    # if environment is "dev" or "sprint"
     # ".dynatracelabs.com" not ".dynatrace.com"
     if dt_env_type.lower() == "dev" or dt_env_type.lower() == "sprint":
         dt_tenant_apps = dt_tenant_apps.replace(".dynatrace.com", ".dynatracelabs.com")
@@ -330,7 +330,7 @@ def build_dt_urls(dt_env_id, dt_env_type="live"):
     return dt_tenant_apps, dt_tenant_live
 
 def _buildDTURLsAndPersistToDisk():
-    dt_tenant_apps, dt_tenant_live = build_dt_urls(DT_deployment.release_stage_ID, DT_deployment.release_stage_TYPE)
+    dt_tenant_apps, dt_tenant_live = build_dt_urls(DT_ENVIRONMENT_ID, DT_ENVIRONMENT_TYPE)
     set_key(dotenv_path=f"{BASE_DIR}/.env", key_to_set="DT_URL", value_to_set=dt_tenant_live, export=True)
 
 # Run the above function
@@ -441,7 +441,7 @@ def send_startup_ping(demo_name=""):
     body = {
         "repo": hashed_org_slash_repo,
         "testing": False,
-        "tenant": DT_deployment.release_stage_ID,
+        "tenant": DT_ENVIRONMENT_ID,
         "demo": demo_name,
         "codespace.name": CODESPACE_NAME
     }
@@ -525,7 +525,7 @@ def configureClusterConnection():
 def createKubernetesCluster():
 
     # For safety, delete any existing clusters
-    # Note, as standard (written by the template) this function is only triggered in the deployment.release_stage_installer.py
+    # Note, as standard (written by the template) this function is only triggered in the environment_installer.py
     # Which in turn only fires on creation
     # So this logic does NOT fire when a user reconnects to an existing container
     try:
@@ -588,7 +588,7 @@ def login(page: Page):
     page.locator('[data-id="password_login"]').fill(TESTING_DYNATRACE_USER_PASSWORD)
     page.locator('[data-id="sign_in"]').click(timeout=WAIT_TIMEOUT)
     page.wait_for_url("**/ui/**")
-    expect(page.locator("title", has_text=DT_deployment.release_stage_ID).first)
+    expect(page.locator("title", has_text=DT_ENVIRONMENT_ID).first)
 
     # Wait for app to load
     wait_for_app_to_load(page)
@@ -596,7 +596,7 @@ def login(page: Page):
 def open_search_menu(page: Page):
     page.get_by_test_id("dock-search").click()
     #expect(page.locator("h1")).to_have_text("Quickly find your apps, documents, entities, and more", timeout=WAIT_TIMEOUT)
-    expect(page.get_by_placeholder("Search and navigate your deployment.release_stage")).to_be_attached(timeout=WAIT_TIMEOUT)
+    expect(page.get_by_placeholder("Search and navigate your environment")).to_be_attached(timeout=WAIT_TIMEOUT)
 
 def search_for(page: Page, search_term: str):
     page.get_by_label("Search query").fill(search_term)

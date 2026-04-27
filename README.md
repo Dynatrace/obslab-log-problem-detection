@@ -28,7 +28,7 @@ Recommended Dev Container secrets:
 - `DT_API_TOKEN_OBSLAB_LOG_PROBLEM_DETECTION`
 - `DT_NOTEBOOK_ID_LOG_PROBLEM_DETECTION`
 
-When the container is created, `deployment.release_stage_installer.py` will:
+When the container is created, `environment_installer.py` will:
 - install Python requirements
 - create a local Kind cluster
 - configure Helm repositories

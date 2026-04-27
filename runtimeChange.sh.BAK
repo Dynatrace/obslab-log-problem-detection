@@ -9,12 +9,12 @@ full_apps_url="https://${DT_ENV_ID_OBSLAB_LOG_PROBLEM_DETECTION}"
 full_gen2_url=""
 
 if [ "${DT_ENV_OBSLAB_LOG_PROBLEM_DETECTION}" = "dev" ]; then
-  echo "deployment.release_stage is dev"
+  echo "environment is dev"
   full_apps_url+=".dev.apps.dynatracelabs.com"
   # Remove apps.
   full_gen2_url=${full_apps_url/apps.}
 elif [ "${DT_ENV_OBSLAB_LOG_PROBLEM_DETECTION}" = "sprint" ]; then
-  echo "deployment.release_stage is sprint"
+  echo "environment is sprint"
   full_apps_url+=".sprint.apps.dynatracelabs.com"
   # Remove apps.
   full_gen2_url=${full_apps_url/apps.}

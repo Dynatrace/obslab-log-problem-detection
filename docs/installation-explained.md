@@ -9,12 +9,12 @@
 
 The OpenTelemetry demo and the Dynatrace collector will be installed automatically.
 
-The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as deployment.release_stage variables.
+The Dynatrace details you provided during startup will be encrypted, stored in GitHub secrets and made available as environment variables.
 
 They will also be stored in a Kubernetes secret `dynatrace-otelcol-dt-api-credentials`
 
 !!! tip
-    Type `printenv` to see all deployment.release_stage variables
+    Type `printenv` to see all environment variables
     set by GitHub.
 
 ## Explain the Configuration

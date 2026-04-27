@@ -29,7 +29,7 @@ components:
       supportInfo: |+
         ## Cart Service Issues Support Information
         If cart service is having issues, please contact the owner
-        and review the [Ops runbook](https://hci34192.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
+        and review the [Ops runbook](https://DT_ENVIRONMENT_ID_PLACEHOLDER.apps.dynatrace.com/ui/document/c21c01cb-b4ad-4eae-9279-a3853f38b1de)
   flagd:
     enabled: true
     # Turn off flagd-ui as it always crashes and we don't need it

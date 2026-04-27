@@ -45,7 +45,7 @@ configmap/flagd-config configured
 
 ## Restart Flagd
 
-Normally flagd can detect changes to files in realtime, but in some deployment.release_stages (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.
+Normally flagd can detect changes to files in realtime, but in some environmentss (due to the underlying operating system's ability to watch and notify on file changes) this sometimes does not work as intended.
 
 To be sure that the new value of `off` is used, restart flagd now:
 
@@ -53,7 +53,7 @@ To be sure that the new value of `off` is used, restart flagd now:
 kukubectl scale deploy flagd --replicas=0
 ```
 
-Wait until the `flagd` pod disappears from the list when you run this command (in our resource constrained deployment.release_stage this take 30s - 1min). Re-run the `get pods` command until you see it disappear:
+Wait until the `flagd` pod disappears from the list when you run this command (in our resource constrained environment this take 30s - 1min). Re-run the `get pods` command until you see it disappear:
 
 ```
 kubectl get pods

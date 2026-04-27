@@ -14,7 +14,7 @@ from utils import *
 
 # Replace placeholders
 DT_NOTEBOOK_ID = os.environ.get("DT_NOTEBOOK_ID")
-do_file_replace(pattern=f"{BASE_DIR}/otel-demo-values.yaml", find_string="DT_deployment.release_stage_ID_PLACEHOLDER", replace_string=DT_deployment.release_stage_ID)
+do_file_replace(pattern=f"{BASE_DIR}/otel-demo-values.yaml", find_string="DT_ENVIRONMENT_ID_PLACEHOLDER", replace_string=DT_ENVIRONMENT_ID)
 do_file_replace(pattern=f"{BASE_DIR}/otel-demo-values.yaml", find_string="DT_NOTEBOOK_ID_PLACEHOLDER", replace_string=DT_NOTEBOOK_ID)
 
 # This logic essentially runs `kind create cluster`
@@ -56,5 +56,5 @@ installOTELDemoApp()
 #     # Testing finished. Destroy the codespace
 #     run_command(["gh", "codespace", "delete", "--codespace", CODESPACE_NAME, "--force"])
 # else:
-#     print("done configuring deployment.release_stage")
+#     print("done configuring environment")
 #     #send_startup_ping(demo_name="obslab-otel-collector-data-ingest")

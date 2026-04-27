@@ -2,11 +2,11 @@
 
 --8<-- "snippets/bizevent-getting-started.js"
 
-## Dynatrace deployment.release_stage
+## Dynatrace Environment
 
-You must have access to a Dynatrace SaaS deployment.release_stage. [Sign up here](https://dt-url.net/trial){target="_blank"}
+You must have access to a Dynatrace SaaS environment. [Sign up here](https://dt-url.net/trial){target="_blank"}
 
-Save the Dynatrace deployment.release_stage URL:
+Save the Dynatrace environment URL:
 
 * Without the trailing slash
 * Without `.apps.` in the URL
@@ -14,7 +14,7 @@ Save the Dynatrace deployment.release_stage URL:
 The generic format is:
 
 ```
-https://<deployment.release_stageID>.<deployment.release_stage>.<URL>
+https://<ENVIRONMENT_ID>.<ENVIRONMENT_TYPE>.<URL>
 ```
 
 For example:
@@ -44,7 +44,7 @@ In Dynatrace:
 * Make a note of the notebook ID from the URL bar
 
 !!! warning
-    Your deployment.release_stage and notebook IDs will be different.
+    Your environment and notebook IDs will be different.
 
 ![notebook ID](images/notebook-id.png)
 
@@ -160,9 +160,9 @@ In Dynatrace:
 
 --8<-- "snippets/codespace-details-warning-box.md"
 
-You've done the hard work! It is time to spin up the demo deployment.release_stage.
+You've done the hard work! It is time to spin up the demo environment.
 
-Click this button to open the demo deployment.release_stage. This will open in a new tab.
+Click this button to open the demo environment. This will open in a new tab.
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dynatrace/obslab-log-problem-detection){target="_blank"}
 

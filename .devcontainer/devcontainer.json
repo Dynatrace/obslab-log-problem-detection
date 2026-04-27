@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/kubernetes-helm
 {
-	"name": "Log Problem Detection deployment.release_stage",
+	"name": "Log Problem Detection Environment",
 	"image": "ubuntu:noble",
 
 	"features": {
@@ -33,15 +33,15 @@
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r .devcontainer/requirements.txt && python deployment.release_stage_installer.py",
+	"postCreateCommand": "pip install -r .devcontainer/requirements.txt && python environment_installer.py",
 	// When a user reconnects to this container, ensure the kubeconfig is meshed so kubectl works
 	"postAttachCommand": "python on_attach.py",
 
 	"secrets": {
-	 	  "DT_deployment.release_stage_ID": {
+	 	  "DT_ENVIRONMENT_ID": {
 	            "description": "eg. abc12345 from https://abc12345.live.dynatrace.com"
 		},
-		  "DT_deployment.release_stage_TYPE": {
+		  "DT_ENVIRONMENT_TYPE": {
 			"description": "eg. live, sprint or dev. If unsure, use live."
 		},
 		  "DT_API_TOKEN": {
