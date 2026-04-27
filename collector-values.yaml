@@ -59,7 +59,7 @@ config:
     k8sattributes:
       extract:
         annotations:
-          - tag_name: costCentre
+          - tag_name: dt.cost.costcenter
             key: costCentre
             from: pod
           - tag_name: deployment.release_stage
