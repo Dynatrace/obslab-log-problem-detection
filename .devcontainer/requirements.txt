@@ -1,4 +1,4 @@
-requests == 2.32.4
+requests == 2.33.0
 loguru == 0.7.3
 python-dotenv == 1.0.1
 pyyaml == 6.0.3
