@@ -5,4 +5,6 @@ pyvenv.cfg
 __pycache__
 bin/
 lib/
+include/
 .env
+.ds_store
