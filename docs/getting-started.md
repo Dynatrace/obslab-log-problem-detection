@@ -4,6 +4,10 @@
 
 ## Dynatrace Environment
 
+```
+kubectl get ns
+```
+
 You must have access to a Dynatrace SaaS environment. [Sign up here](https://dt-url.net/trial){target="_blank"}
 
 Save the Dynatrace environment URL:

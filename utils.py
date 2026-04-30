@@ -321,7 +321,7 @@ def build_dt_urls(dt_env_id, dt_env_type="live"):
       dt_tenant_apps = f"https://{dt_env_id}.{dt_env_type}.apps.dynatrace.com"
       dt_tenant_live = f"https://{dt_env_id}.{dt_env_type}.dynatrace.com"
 
-    # if environment is "dev" or "sprint"
+    # if ENVIRONMENT is "dev" or "sprint"
     # ".dynatracelabs.com" not ".dynatrace.com"
     if dt_env_type.lower() == "dev" or dt_env_type.lower() == "sprint":
         dt_tenant_apps = dt_tenant_apps.replace(".dynatrace.com", ".dynatracelabs.com")
@@ -525,7 +525,7 @@ def configureClusterConnection():
 def createKubernetesCluster():
 
     # For safety, delete any existing clusters
-    # Note, as standard (written by the template) this function is only triggered in the environment_installer.py
+    # Note, as standard (written by the template) this function is only triggered in the ENVIRONMENT_installer.py
     # Which in turn only fires on creation
     # So this logic does NOT fire when a user reconnects to an existing container
     try:
@@ -596,7 +596,7 @@ def login(page: Page):
 def open_search_menu(page: Page):
     page.get_by_test_id("dock-search").click()
     #expect(page.locator("h1")).to_have_text("Quickly find your apps, documents, entities, and more", timeout=WAIT_TIMEOUT)
-    expect(page.get_by_placeholder("Search and navigate your environment")).to_be_attached(timeout=WAIT_TIMEOUT)
+    expect(page.get_by_placeholder("Search and navigate your ENVIRONMENT")).to_be_attached(timeout=WAIT_TIMEOUT)
 
 def search_for(page: Page, search_term: str):
     page.get_by_label("Search query").fill(search_term)
@@ -751,5 +751,21 @@ def installDynatraceCollector():
 def installOTELDemoApp():
     run_command(["helm", "upgrade", "-i", "my-otel-demo", "open-telemetry/opentelemetry-demo", "-f", "otel-demo-values.yaml"], ignore_errors=True)
 
+def addHelmChart(name, url, update):
+    run_command(["helm", "repo", "add", name, url])
+    if update:
+        run_command(["helm", "repo", "update"])
+def helmInstall(name, url, namespace, values_file=None, atomic=False):
+    command = ["helm", "upgrade", "-i", name, url, f"--namespace={namespace}", f"--atomic={atomic}"]
+    if values_file:
+        command.append(f"--values={values_file}")
+    run_command(command)
+
+
+def createNamespace(name):
+    run_command(["kubectl", "create", "namespace", name])
+
 # At the end of it all, load in whatever is currently in .env
 load_dotenv()
+
+DT_URL = os.environ.get("DT_URL")

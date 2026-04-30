@@ -11,9 +11,7 @@ Expose the user interface on port 8080 by port-forwarding:
 kubectl -n default port-forward svc/frontend-proxy 8080:8080
 ```
 
-Go to the `Ports` tab, right click the port `8080` and choose `Open in Browser`.
-
-You should see the OpenTelemetry demo application.
+Now open http://localhost:8080 - You should see the OpenTelemetry demo application.
 
 ![opentelemetry demo application](images/otel-demo-app.png)
 
